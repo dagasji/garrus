@@ -1,0 +1,7 @@
+.mat-row :hover {
+	cursor: pointer;
+}
+
+.actionButton {
+	min-width: 30px;
+}

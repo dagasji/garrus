@@ -1,0 +1,12 @@
+.logo-img img {
+	width: 215px;
+}
+
+.nav {
+    margin-top: 100px; 
+}
+
+.logo:after {
+ 	height: 0px; 
+ }
+ 
