@@ -20,6 +20,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import {CustomersRoutingModule} from './vehicles-routing.module';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import {CustomersRoutingModule} from './vehicles-routing.module';
     MatSelectModule,
     MatGridListModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ],
   exports:  [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent],
   declarations: [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent],
