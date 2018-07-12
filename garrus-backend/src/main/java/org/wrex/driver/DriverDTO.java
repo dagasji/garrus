@@ -1,4 +1,4 @@
-package org.wrex.dto;
+package org.wrex.driver;
 
 public class DriverDTO {
 	

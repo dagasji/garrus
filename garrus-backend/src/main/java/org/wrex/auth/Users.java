@@ -1,4 +1,4 @@
-package org.wrex.entities;
+package org.wrex.auth;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +15,7 @@ public class Users {
 	
 	@Column
 	private String name;
-
+	
 	public String getUsername() {
 		return username;
 	}

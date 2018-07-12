@@ -1,4 +1,4 @@
-package org.wrex.entities;
+package org.wrex.vehicles;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.wrex.driver.Driver;
 
 /**
  * The persistent class for the event database table. This class is created

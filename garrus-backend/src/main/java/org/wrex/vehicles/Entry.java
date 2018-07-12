@@ -1,22 +1,30 @@
-package org.wrex.dto;
+package org.wrex.vehicles;
 
 import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OrderBy;
 
-public class EntryDTO {
+@Entity
+public class Entry {
 
+	@Id
+	@GeneratedValue
 	private Integer id;
 	
+	@Column
 	private String plate;
 	
-	private String date;
+	@Column
+	private Date date;
 	
+	@Column
 	private String info;
 
-	
+//	@Column String kilometros;
 	
 	@Override
 	public String toString() {
@@ -47,7 +55,7 @@ public class EntryDTO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		EntryDTO other = (EntryDTO) obj;
+		Entry other = (Entry) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -64,11 +72,11 @@ public class EntryDTO {
 		this.id = id;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -87,6 +95,8 @@ public class EntryDTO {
 	public void setPlate(String plate) {
 		this.plate = plate;
 	}
+	
+	
 	
 	
 }

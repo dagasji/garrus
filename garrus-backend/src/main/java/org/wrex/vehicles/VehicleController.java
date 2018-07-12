@@ -1,4 +1,4 @@
-package org.wrex.controller;
+package org.wrex.vehicles;
 
 import java.util.List;
 
@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.wrex.dto.EntryDTO;
-import org.wrex.dto.VehicleDTO;
-import org.wrex.service.VehicleService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")

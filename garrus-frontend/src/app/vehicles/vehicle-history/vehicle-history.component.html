@@ -4,9 +4,9 @@
 
 		<div class="row">
 			<div class="col-md-8">
-				<mat-table [dataSource]="dataSource"> <ng-container
+				<mat-table [dataSource]="dataSource" matSort> <ng-container
 					matColumnDef="date"> <mat-header-cell
-					*matHeaderCellDef> Fecha </mat-header-cell> <mat-cell
+					*matHeaderCellDef mat-sort-header> Fecha </mat-header-cell> <mat-cell
 					*matCellDef="let entry"> {{entry.date}} </mat-cell> </ng-container> <ng-container
 					matColumnDef="info"> <mat-header-cell
 					*matHeaderCellDef> Detalle </mat-header-cell> <mat-cell
@@ -19,6 +19,8 @@
 				</mat-cell> </ng-container> <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 				<mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 				</mat-table>
+				<mat-paginator #paginator [length]="100" [pageSize]="5"
+					[pageSizeOptions]="[5, 10, 15]"> </mat-paginator>
 			</div>
 			<div class="col-md-4">
 				<div class="card">
@@ -27,15 +29,17 @@
 						<!-- 						<p class="card-category"></p> -->
 					</div>
 					<div class="card-body">
-						<mat-form-field> <input matInput type="date"
-							placeholder="Fecha reparación"
-							[ngModel]="entry.date| date:'yyyy-MM-dd'"
-							(ngModelChange)="entry.date = $event" required> </mat-form-field>
-						<mat-form-field> <textarea [cols]="20" required
-							matInput placeholder="Detalle reparación"
-							[(ngModel)]="entry.info" matTextareaAutosize></textarea> </mat-form-field>
-						<button mat-raised-button color="primary" class="pull-right"
-							(click)="addEntry()">Agregar</button>
+						<form #f="ngForm" novalidate (ngSubmit)="addEntry()">
+							<mat-form-field> <input matInput type="date"
+								name="date" placeholder="Fecha reparación"
+								[ngModel]="entry.date| date:'yyyy-MM-dd'"
+								(ngModelChange)="entry.date = $event" required> </mat-form-field>
+							<mat-form-field> <textarea matInput [cols]="20"
+								required name="info" placeholder="Detalle reparación"
+								[(ngModel)]="entry.info" matTextareaAutosize></textarea> </mat-form-field>
+							<button mat-raised-button color="primary" class="pull-right"
+								type="submit" [disabled]="f.invalid">Agregar</button>
+						</form>
 					</div>
 				</div>
 			</div>

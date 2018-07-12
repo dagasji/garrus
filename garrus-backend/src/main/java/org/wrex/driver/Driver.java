@@ -1,4 +1,4 @@
-package org.wrex.entities;
+package org.wrex.driver;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

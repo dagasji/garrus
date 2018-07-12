@@ -1,4 +1,4 @@
-package org.wrex.service.impl;
+package org.wrex.driver;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -10,10 +10,6 @@ import javax.transaction.Transactional;
 import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.wrex.dao.DriverRepository;
-import org.wrex.dto.DriverDTO;
-import org.wrex.mappers.DriverMapper;
-import org.wrex.service.DriverService;
 
 @Service
 @Transactional

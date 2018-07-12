@@ -1,8 +1,6 @@
-package org.wrex.service;
+package org.wrex.driver;
 
 import java.util.List;
-
-import org.wrex.dto.DriverDTO;
 
 public interface DriverService {
 

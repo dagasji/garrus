@@ -1,8 +1,7 @@
-package org.wrex.dao;
+package org.wrex.driver;
 
 
 import org.springframework.data.repository.CrudRepository;
-import org.wrex.entities.Users;
 
 
 /**
@@ -14,6 +13,6 @@ import org.wrex.entities.Users;
  * deleting and searching user objects</p>
  *
  */
-public interface UsersRepository extends CrudRepository<Users,String>{
+public interface DriverRepository extends CrudRepository<Driver,String>{
 
 }

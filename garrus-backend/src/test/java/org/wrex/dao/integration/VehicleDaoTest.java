@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import org.wrex.dao.VehicleRepository;
-import org.wrex.entities.Vehicle;
+import org.wrex.vehicles.Vehicle;
+import org.wrex.vehicles.VehicleRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:integrationTest-config.xml" })

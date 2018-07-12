@@ -1,4 +1,4 @@
-package org.wrex.controller;
+package org.wrex.auth;
 
 import java.util.Optional;
 
@@ -8,10 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.wrex.dao.UsersRepository;
-import org.wrex.dto.UsersDTO;
-import org.wrex.entities.Users;
-import org.wrex.mappers.UserMapper;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")

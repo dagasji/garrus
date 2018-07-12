@@ -1,10 +1,7 @@
-package org.wrex.dao;
+package org.wrex.auth;
 
-
-import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
-import org.wrex.entities.Entry;
 
 
 /**
@@ -16,7 +13,6 @@ import org.wrex.entities.Entry;
  * deleting and searching user objects</p>
  *
  */
-public interface EntryRepository extends CrudRepository<Entry,Integer>{
+public interface UsersRepository extends CrudRepository<Users,String>{
 
-	List<Entry> findByPlateOrderByDateDesc(String plate);
 }

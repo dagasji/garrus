@@ -1,13 +1,11 @@
-package org.wrex.mappers;
+package org.wrex.auth;
 
 import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.wrex.dto.DriverDTO;
-import org.wrex.dto.UsersDTO;
-import org.wrex.entities.Driver;
-import org.wrex.entities.Users;
+import org.wrex.driver.Driver;
+import org.wrex.driver.DriverDTO;
 
 @Mapper
 public interface UserMapper {

@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import org.wrex.dto.VehicleDTO;
+import org.wrex.vehicles.VehicleDTO;
+import org.wrex.vehicles.VehicleService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:test-config.xml" })
@@ -56,7 +57,7 @@ public class UserServiceTest {
 //		user.setIdpicture("2");
 //		user.setIduser(1);
 //		user.setName("nombre");
-//		user.setPassword("asdasdxcfweiorjlskjdfoiashdroñ832u4u8o");
+//		user.setPassword("asdasdxcfweiorjlskjdfoiashdroï¿½832u4u8o");
 //		user.setRole(1);
 //		user.setStatus(1);
 //		return user;

@@ -1,7 +1,9 @@
-package org.wrex.dto;
+package org.wrex.vehicles;
 
 import java.io.Serializable;
 import java.util.List;
+
+import org.wrex.driver.DriverDTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

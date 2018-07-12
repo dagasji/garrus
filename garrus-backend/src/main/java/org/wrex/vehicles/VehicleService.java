@@ -1,9 +1,6 @@
-package org.wrex.service;
+package org.wrex.vehicles;
 
 import java.util.List;
-
-import org.wrex.dto.EntryDTO;
-import org.wrex.dto.VehicleDTO;
 
 public interface VehicleService {
 

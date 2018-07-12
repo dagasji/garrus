@@ -1,8 +1,9 @@
-package org.wrex.dao;
+package org.wrex.vehicles;
 
+
+import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
-import org.wrex.entities.Vehicle;
 
 
 /**
@@ -14,6 +15,7 @@ import org.wrex.entities.Vehicle;
  * deleting and searching user objects</p>
  *
  */
-public interface VehicleRepository extends CrudRepository<Vehicle,String>{
+public interface EntryRepository extends CrudRepository<Entry,Integer>{
 
+	List<Entry> findByPlateOrderByDateDesc(String plate);
 }

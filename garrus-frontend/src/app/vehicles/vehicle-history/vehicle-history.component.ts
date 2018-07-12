@@ -1,8 +1,8 @@
 import {Entry} from '../entry';
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import {VehicleService} from '../vehicle.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatTableDataSource, MatSort} from '@angular/material';
 
 @Component({
   selector: 'app-vehicle-history',
@@ -15,10 +15,18 @@ export class VehicleHistoryComponent implements OnInit {
   dataSource = new MatTableDataSource();
   displayedColumns = ['info', 'date', 'actions'];
   @Input() entry = new Entry();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  
   constructor(private vehicleService: VehicleService) {}
 
   ngOnInit() {
     this.loadData();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   loadData() {
@@ -28,10 +36,11 @@ export class VehicleHistoryComponent implements OnInit {
   addEntry() {
     this.entry.plate = this.plate;
     this.vehicleService.pushEntry(this.entry).subscribe(res => this.loadData());
+    this.entry = new Entry();
   }
 
   onDelete(entry: Entry) {
-    if (confirm("¿Está seguro de que quiere eliminar el registro? Esta acción no se puede deshacer")){
+    if (confirm("¿Está seguro de que quiere eliminar el registro? Esta acción no se puede deshacer")) {
       this.vehicleService.deleteEntry(entry).subscribe(res => this.loadData());
     }
   }
