@@ -1,5 +1,7 @@
 package org.wrex.dao.integration;
 
+import javax.transaction.Transactional;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,26 +9,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.wrex.Application;
-import org.wrex.vehicles.Vehicle;
-import org.wrex.vehicles.VehicleRepository;
+import org.wrex.division.Division;
+import org.wrex.division.DivisionRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
-public class VehicleDaoTest {
+public class DivisionRepoTest {
 
 	@Autowired
-	VehicleRepository userDao;
+	DivisionRepository divDao;
 
 	@Test
-	public void createUser() {
-		Vehicle test = new Vehicle();
-		test.setPlate("XXXX-22");
-		userDao.save(test);
-		Assert.assertEquals(5, userDao.count());
+	@Transactional
+	public void getDivision() {
+		Division div = divDao.findById("Administracion").get();
+		Assert.assertEquals("Administración municipal", div.getDescription());
+		Assert.assertEquals("Servicios generales", div.getSectors().get(0).getName());
 	}
 
-	@Test
-	public void getAll() {
-		Assert.assertEquals(4, userDao.count());
-	}
 }

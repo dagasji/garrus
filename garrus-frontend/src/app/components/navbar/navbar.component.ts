@@ -1,5 +1,5 @@
 import { AuthService } from '../../auth/auth.service';
-import { User } from '../../auth/user';
+import { Authoritation } from '../../auth/authoritation';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
-     private user: User;
+     private user: Authoritation;
 
     constructor(private authService: AuthService, location: Location,  private element: ElementRef, private router: Router) {
       this.location = location;

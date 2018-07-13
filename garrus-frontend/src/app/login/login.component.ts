@@ -1,5 +1,5 @@
 import {AuthService} from '../auth/auth.service';
-import {User} from '../auth/user';
+import {Authoritation} from '../auth/authoritation';
 import {Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import {NotificationsComponent} from '../notifications/notifications.component'
@@ -11,7 +11,7 @@ import {NotificationsComponent} from '../notifications/notifications.component'
 })
 export class LoginComponent implements OnInit {
 
-  @Input() user: User = new User();
+  @Input() user: Authoritation = new Authoritation();
 
   constructor(public authService: AuthService, public router: Router) {}
 

@@ -3,9 +3,13 @@ package org.wrex.auth;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-@Entity
-public class Users {
+import org.wrex.division.Sector;
+
+@Entity(name="users")
+public class User {
 	
 	@Id
 	private String username;
@@ -15,10 +19,31 @@ public class Users {
 	
 	@Column
 	private String name;
+
+	@Column
+	private String specialPermissions;
+	
+	@ManyToOne
+	@JoinColumn(name="sector")
+	private Sector sector;
 	
 	public String getUsername() {
 		return username;
 	}
+	
+	
+
+	public Sector getSector() {
+		return sector;
+	}
+
+
+
+	public void setSector(Sector sector) {
+		this.sector = sector;
+	}
+
+
 
 	public void setUsername(String username) {
 		this.username = username;
@@ -56,7 +81,7 @@ public class Users {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Users other = (Users) obj;
+		User other = (User) obj;
 		if (username == null) {
 			if (other.username != null)
 				return false;
@@ -65,17 +90,33 @@ public class Users {
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Users [username=");
+		builder.append("User [username=");
 		builder.append(username);
 		builder.append(", password=");
 		builder.append(password);
 		builder.append(", name=");
 		builder.append(name);
+		builder.append(", specialPermissions=");
+		builder.append(specialPermissions);
+		builder.append(", sector=");
+		builder.append(sector);
 		builder.append("]");
 		return builder.toString();
+	}
+
+
+
+	public String getSpecialPermissions() {
+		return specialPermissions;
+	}
+
+	public void setSpecialPermissions(String specialPermissions) {
+		this.specialPermissions = specialPermissions;
 	}
 	
 

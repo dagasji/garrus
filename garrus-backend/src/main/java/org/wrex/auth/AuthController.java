@@ -1,5 +1,6 @@
 package org.wrex.auth;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,16 @@ public class AuthController {
 	
 	@RequestMapping(value="/auth",method=RequestMethod.POST)
 	public UsersDTO checkLogin(@RequestBody UsersDTO req) {
-		Optional<Users> user = repo.findById(req.getUsername());
+		Optional<User> user = repo.findById(req.getUsername());
 		if (user.isPresent() && user.get().getPassword().equals(req.getPassword())) {
 			return UserMapper.INSTANCE.entityToDTO(user.get());
 		}else
 			return null;
-			
 	}
+	
+	@RequestMapping(value="/auth/permissions",method=RequestMethod.GET)
+	public List<PermissionDTO> getPermissions() {
+		return PermissionEnum.getAll();	
+	}
+	
 }

@@ -27,7 +27,8 @@ import {
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import {VehiclesModule} from './vehicles/vehicles.module';
 import { LoginComponent } from './login/login.component'
-
+import { UserService } from './user-profile/user.service';
+import { AdminUsersModule } from './admin-users/admin-users.module';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -44,9 +45,10 @@ import {MatInputModule} from '@angular/material/input';
     MatButtonModule,
     MatInputModule,
     VehiclesModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    }),
+    AdminUsersModule
+//    AgmCoreModule.forRoot({
+//      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+//    }),
   ],
   declarations: [
     AppComponent,

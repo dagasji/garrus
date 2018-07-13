@@ -19,8 +19,17 @@ export const AdminLayoutRoutes: Routes = [
       path: 'vehicles',
       loadChildren: 'app/vehicles/vehicles.module#VehiclesModule'
     }]
+  },{
+    path: '',
+//    canActivate: [AuthGuard],
+//    canActivateChild: [AuthGuard],
+    children: [{
+      path: 'users',
+      loadChildren: 'app/admin-users/admin-users.module#AdminUsersModule'
+    }]
   },
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'user-profile', component: UserProfileComponent},
   {path: 'user-profile', component: UserProfileComponent},
   {path: 'table-list', component: TableListComponent},
   {path: 'typography', component: TypographyComponent},

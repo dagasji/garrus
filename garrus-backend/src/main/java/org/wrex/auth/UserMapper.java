@@ -11,7 +11,7 @@ import org.wrex.driver.DriverDTO;
 public interface UserMapper {
 	UserMapper INSTANCE = Mappers.getMapper( UserMapper.class );
     
-	UsersDTO entityToDTO(Users driver); 
-	Users dtoToEntity(UsersDTO driver); 
-    List<UsersDTO> listToDTOList(List<Users> source);
+	UsersDTO entityToDTO(User source); 
+	User dtoToEntity(UsersDTO source); 
+    List<UsersDTO> listToDTOList(List<User> source);
 }

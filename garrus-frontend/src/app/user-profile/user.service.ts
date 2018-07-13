@@ -1,5 +1,4 @@
-import { Permission } from './permission';
-import {Authoritation} from './authoritation';
+import {User} from './user';
 import {Injectable} from '@angular/core';
 
 import {Observable} from 'rxjs';
@@ -12,25 +11,30 @@ const httpOptions = {
 };
 
 @Injectable()
-export class AuthService {
-  user: Authoritation;
+export class UserService {
+  user: User;
 
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
-  private authURL = 'http://localhost:8080/auth';
+  private authURL = 'http://localhost:8080/user';
 
 
   constructor(
     private http: HttpClient) {}
 
-  login(user: Authoritation): Observable<Authoritation> {
-    return this.http.post<Authoritation>(this.authURL, user, httpOptions);
+  getUser(username: string): Observable<User> {
+    return this.http.get<User>(`${this.authURL}/${username}`);
   }
   
-  getAvaliablePermissions(): Observable<Permission[]>{
-    return this.http.get<Permission[]>(this.authURL+'/permissions',httpOptions);
+   getAll(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.authURL}/getAll`);
   }
+  
+   updateUser(user: User): Observable<User> {
+    return this.http.put<User>(`${this.authURL}/${user.username}`,user,httpOptions);
+  }
+  
   
   
   isLoggedIn(){

@@ -99,13 +99,43 @@ INSERT INTO `entry` values (1,'Reparacion 1','FYJA-44','2019-02-26');
 INSERT INTO `entry` values (2,'Reparacion 2','FYJA-44','2019-02-27');
 INSERT INTO `entry` values (3,'Reparacion 3','FYJA-44','2019-03-12');
 
+
+DROP TABLE IF EXISTS `division`;
+CREATE TABLE `division` (
+  `name` varchar(50) NOT NULL,
+  `description` varchar(500) NOT NULL ,
+	PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `division` values ('Administracion','Administración municipal');
+
+DROP TABLE IF EXISTS `sector`;
+CREATE TABLE `sector` (
+  `name` varchar(50) NOT NULL,
+  `description` varchar(500) NOT NULL ,
+  `division_name` varchar(50) NOT NULL ,
+  `permissions` varchar(1000) NOT NULL ,
+	PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `sector` 
+ADD CONSTRAINT `divisionFK`
+  FOREIGN KEY (`division_name`)
+  REFERENCES `division` (`name`)
+  ON DELETE CASCADE
+  ON UPDATE NO ACTION;
+
+INSERT INTO `sector` values ('Servicios generales','Servicios generales (vehiculos)','Administracion', 'MODULE_VEHICLE_ACCESS,MODULE_VEHICLE_MODIFY');
+
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL ,
   `name` varchar(100) NOT NULL,
+  `sector` varchar(50) NOT NULL,
+  `special_permissions` varchar(1000) NULL,
 	PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` values ('konum','hola','Guillermo Gefaell');
-INSERT INTO `users` values ('cbueno','8819','Cecilia Bueno');
+INSERT INTO `users` values ('konum','hola','Guillermo Gefaell','Servicios generales','');
+INSERT INTO `users` values ('cbueno','8819','Cecilia Bueno','Servicios generales','');

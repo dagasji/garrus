@@ -1,4 +1,4 @@
-package org.wrex.auth;
+package org.wrex.division;
 
 
 import org.springframework.data.repository.CrudRepository;
@@ -13,6 +13,6 @@ import org.springframework.data.repository.CrudRepository;
  * deleting and searching user objects</p>
  *
  */
-public interface UsersRepository extends CrudRepository<User,String>{
+public interface DivisionRepository extends CrudRepository<Division,String>{
 
 }
