@@ -40,6 +40,7 @@ CREATE TABLE `vehicle` (
   `tyres` varchar(45) NULL,
   `last_maintenance` date NULL,
   `next_inspection` date NULL,
+  `on_repair` int(1) NULL default 0,
   PRIMARY KEY (`plate`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -49,10 +50,10 @@ CREATE TABLE `vehicle` (
 --
 
 LOCK TABLES `vehicle` WRITE;
-INSERT INTO `vehicle` VALUES ('FYJA-44','gasolina','Camioneta','coche alcalde','2017','Honda','Hilux','22222222-2','2019-02-26','214-55 R18','2018-06-26','2018-10-26');
-INSERT INTO `vehicle` VALUES ('JYSH-22','diesel','Bus','Bus escolar','2017','Honda','Hilux','22222222-2','2019-02-26','214-55 R18','2018-06-26','2018-10-26');
-INSERT INTO `vehicle` VALUES ('UKWH-33','gasolina','Tractor','JAC','2017','Honda','Hilux','11111111-1','2019-02-26','214-55 R18','2018-06-26','2018-10-26');
-INSERT INTO `vehicle` VALUES ('LAKN-55','gasolina','Ambulancia','Ram payne','2017','Honda','Hilux','11111111-1','2019-02-26','214-55 R18','2018-06-26','2018-10-26');
+INSERT INTO `vehicle` VALUES ('FYJA-44','gasolina','Camioneta','coche alcalde','2017','Honda','Hilux','22222222-2','2019-02-26','214-55 R18','2018-06-26','2018-10-26',0);
+INSERT INTO `vehicle` VALUES ('JYSH-22','diesel','Bus','Bus escolar','2017','Honda','Hilux','22222222-2','2019-02-26','214-55 R18','2018-06-26','2018-10-26',0);
+INSERT INTO `vehicle` VALUES ('UKWH-33','gasolina','Tractor','JAC','2017','Honda','Hilux','11111111-1','2019-02-26','214-55 R18','2018-06-26','2018-10-26',0);
+INSERT INTO `vehicle` VALUES ('LAKN-55','gasolina','Ambulancia','Ram payne','2017','Honda','Hilux','11111111-1','2019-02-26','214-55 R18','2018-06-26','2018-10-26',0);
 UNLOCK TABLES;
 
 --
@@ -139,3 +140,26 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` values ('konum','hola','Guillermo Gefaell','Servicios generales','');
 INSERT INTO `users` values ('cbueno','8819','Cecilia Bueno','Servicios generales','');
+
+
+DROP TABLE IF EXISTS `ride`;
+CREATE TABLE `ride` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `plate` varchar(50) NOT NULL ,
+  `rut_chofer` varchar(10) NOT NULL,
+  `start` datetime  NOT NULL,
+  `end` datetime NULL,
+  `details` varchar(500) NULL,
+  `distance` INT(4) NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*INSERT INTO `driver` values ('22222222-2', 'Walter');
+INSERT INTO `driver` values ('11111111-1', 'Danilo');
+INSERT INTO `vehicle` VALUES ('FYJA-44','gasolina','Camioneta','coche alcalde','2017','Honda','Hilux','22222222-2','2019-02-26','214-55 R18','2018-06-26','2018-10-26');
+INSERT INTO `vehicle` VALUES ('JYSH-22','diesel','Bus','Bus escolar','2017','Honda','Hilux','22222222-2','2019-02-26','214-55 R18','2018-06-26','2018-10-26');
+*/
+INSERT INTO `ride` values ('1','FYJA-44','11111111-1','2018-06-26 10:00:00','2018-06-26 14:00:00','VIaje a natales','120');
+INSERT INTO `ride` values ('2','FYJA-44','11111111-1','2018-06-27 10:00:00','2018-06-28 14:00:00','VIaje a PUQ','800');
+INSERT INTO `ride` values ('3','FYJA-44','22222222-2','2018-06-29 10:00:00','2018-06-29 14:00:00','VIaje a guido','100');
+INSERT INTO `ride` values ('4','JYSH-22','22222222-2','2018-06-30 10:00:00','2018-06-30 14:00:00','VIaje a guido','100');

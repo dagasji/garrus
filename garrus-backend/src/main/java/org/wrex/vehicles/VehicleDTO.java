@@ -32,7 +32,9 @@ public class VehicleDTO implements Serializable {
 	private String lastMaintenance;
 	 @JsonProperty("next_inspection")
 	private String nextInspection;
+	 private boolean onRepair;
 
+	 
 	private List<EntryDTO> history;
 	
 	public VehicleDTO() {
@@ -200,6 +202,14 @@ public class VehicleDTO implements Serializable {
 
 	public void setHistory(List<EntryDTO> history) {
 		this.history = history;
+	}
+
+	public boolean isOnRepair() {
+		return onRepair;
+	}
+
+	public void setOnRepair(boolean onRepair) {
+		this.onRepair = onRepair;
 	}
 
 }

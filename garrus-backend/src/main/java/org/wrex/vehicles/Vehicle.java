@@ -2,14 +2,12 @@ package org.wrex.vehicles;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import org.wrex.driver.Driver;
 
@@ -50,10 +48,9 @@ public class Vehicle implements Serializable {
 	private Date lastMaintenance;
 	@Column
 	private Date nextInspection;
-
-//	@OneToMany
-//	@JoinColumn(name="plate")
-//	private List<Entry> history;
+	
+	@Column
+	private boolean onRepair;
 
 	@Override
 	public int hashCode() {
@@ -214,12 +211,13 @@ public class Vehicle implements Serializable {
 		this.chofer = chofer;
 	}
 
-//	public List<Entry> getHistory() {
-//		return history;
-//	}
-//
-//	public void setHistory(List<Entry> history) {
-//		this.history = history;
-//	}
+	public boolean isOnRepair() {
+		return onRepair;
+	}
+
+	public void setOnRepair(boolean onRepair) {
+		this.onRepair = onRepair;
+	}
+
 
 }
