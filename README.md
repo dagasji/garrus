@@ -11,17 +11,17 @@ Stack tecnológico
 - Código fuente en inglés.
 
 ## Screenshots actuales
-[https://raw.githubusercontent.com/konum/garrus/master/images/vehicles1.png]
-[https://raw.githubusercontent.com/konum/garrus/master/images/vehicles2.png]
+![Lista de vehiculos](https://raw.githubusercontent.com/konum/garrus/master/images/vehicles1.png)
+![Detalle de un vehiculo](https://raw.githubusercontent.com/konum/garrus/master/images/vehicles2.png)
 
 ## Release 1 (20/07/2018):
 - Gestión de vehiculos y conductores: 
-	-- Detalles del vehiculo y su bitacora de eventos, asì como su bitacora de viajes.
-	-- Detalles de conductores.
-	-- Gestión de viajes.
+  - Detalles del vehiculo y su bitacora de eventos, asì como su bitacora de viajes.
+  - Detalles de conductores.
+  - Gestión de viajes.
 	
 - Gestión de usuarios básica
-	-- Creación de usuarios
+  - Creación de usuarios
 	
 - Seguridad básica a nivel web con login. Sin seguridad en los servicios REST del backend.
 
