@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import org.wrex.mappers.DateMapper;
+import org.wrex.mappers.DateTimeMapper;
 
 @Mapper
 public interface RideMapper {

@@ -22,6 +22,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {CustomersRoutingModule} from './vehicles-routing.module';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { VehiclesDashboardComponent } from './vehicles-dashboard/vehicles-dashboard.component';
+import { RidesListComponent } from './rides-list/rides-list.component';
+import { RidesDetailComponent } from './rides-detail/rides-detail.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { RideService } from './ride.service';
 
 @NgModule({
   imports: [
@@ -41,8 +46,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatSortModule,
     MatPaginatorModule
   ],
-  exports:  [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent],
-  declarations: [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent],
-  providers: [ VehicleService, DriverService],
+  exports:  [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent,VehiclesDashboardComponent],
+  declarations: [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent, VehiclesDashboardComponent, RidesListComponent, RidesDetailComponent, NavigationComponent],
+  providers: [ VehicleService, DriverService, RideService],
 })
 export class VehiclesModule { }

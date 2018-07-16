@@ -15,6 +15,7 @@ export class Vehicle {
   chofer: Driver;
   soap_date: string;
   tyres: string;
+  on_repair: boolean;
   last_maintenance: Date;
   next_inspection: Date;
   history: Entry[];

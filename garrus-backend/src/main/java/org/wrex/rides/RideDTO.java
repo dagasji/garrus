@@ -1,5 +1,6 @@
 package org.wrex.rides;
 
+
 import java.util.Date;
 
 import org.wrex.driver.DriverDTO;
@@ -10,7 +11,7 @@ public class RideDTO {
 	private Integer id;
 	
 	private Date start;
-	
+
 	private Date end;
 	
 	private DriverDTO chofer;

@@ -6,55 +6,90 @@
 					<div class="card-header card-header-danger">
 						<h4 class="card-title ">Detalles vehiculo {{vehicle.plate |
 							uppercase}}</h4>
-						<!-- 						<p class="card-category"></p> -->
 					</div>
 					<div class="card-body">
 						<form #f="ngForm" novalidate (ngSubmit)="save()">
-							<mat-grid-list cols="4" rowHeight="80px"> <mat-grid-tile>
-							<mat-form-field class="example-full-width"> <input
-								matInput [disabled]="disabledPlate" required name="plate"
-								placeholder="Patente" [(ngModel)]="vehicle.plate"> </mat-form-field> </mat-grid-tile> <mat-grid-tile>
-							<mat-form-field class="example-full-width"> <input
-								name="type" required matInput placeholder="Tipo de vehiculo"
-								[(ngModel)]="vehicle.vehicle_type"> </mat-form-field> </mat-grid-tile> <mat-grid-tile>
-							<mat-form-field class="example-full-width"> <input
-								name="gas" required matInput placeholder="Combustible"
-								[(ngModel)]="vehicle.gas"> </mat-form-field> </mat-grid-tile> <mat-grid-tile>
-							<mat-form-field class="example-full-width"> <input
-								name="year" matInput placeholder="Año"
-								[(ngModel)]="vehicle.year"> </mat-form-field> </mat-grid-tile> <mat-grid-tile>
-							<mat-form-field class="example-full-width"> <input
-								matInput name="brand" placeholder="Marca"
-								[(ngModel)]="vehicle.brand"> </mat-form-field> </mat-grid-tile> <mat-grid-tile>
-							<mat-form-field class="example-full-width"> <input
-								name="model" matInput placeholder="Modelo"
-								[(ngModel)]="vehicle.model"> </mat-form-field> </mat-grid-tile> <mat-grid-tile>
-							<mat-form-field class="example-full-width"> <mat-select
-								name="chofer" [compareWith]="compareFn" placeholder="Chofer"
-								[(ngModel)]="vehicle.chofer"> <mat-option
-								*ngFor="let chofer of drivers" [value]="chofer"> {{
-							chofer.name }} </mat-option> </mat-select> </mat-form-field> </mat-grid-tile> <mat-grid-tile> <mat-form-field
-								class="example-full-width"> <input matInput
-								name="details" placeholder="Detalle"
-								[(ngModel)]="vehicle.details" required> </mat-form-field> </mat-grid-tile> <mat-grid-tile>
-							<mat-form-field class="example-full-width"> <input
-								matInput name="soap" required type="date"
-								placeholder="Vencimiento SOAP"
-								[ngModel]="vehicle.soap_date | date:'yyyy-MM-dd'"
-								(ngModelChange)="vehicle.soap_date = $event"> </mat-form-field> </mat-grid-tile> <mat-grid-tile>
-							<mat-form-field class="example-full-width"> <input
-								name="tyres" matInput placeholder="Ruedas"
-								[(ngModel)]="vehicle.tyres"> </mat-form-field> </mat-grid-tile> <mat-grid-tile>
-							<mat-form-field class="example-full-width"> <input
-								matInput name="maitenance" required type="date"
-								placeholder="Última mantención"
-								[ngModel]="vehicle.last_maintenance | date:'yyyy-MM-dd'"
-								(ngModelChange)="vehicle.last_maintenance = $event"> </mat-form-field> </mat-grid-tile> <mat-grid-tile>
-							<mat-form-field class="example-full-width"> <input
-								name="tec" matInput required type="date"
-								placeholder="Revisión técnica"
-								[ngModel]="vehicle.next_inspection | date:'yyyy-MM-dd'"
-								(ngModelChange)="vehicle.next_inspection = $event"> </mat-form-field> </mat-grid-tile> </mat-grid-list>
+							<div class="row">
+								<div class="col-md-3">
+									<mat-form-field class="example-full-width"> <input
+										matInput [disabled]="disabledPlate" required name="plate"
+										placeholder="Patente" [(ngModel)]="vehicle.plate"> </mat-form-field>
+								</div>
+								<div class="col-md-3">
+									<mat-form-field class="example-full-width"> <input
+										name="type" required matInput placeholder="Tipo de vehiculo"
+										[(ngModel)]="vehicle.vehicle_type"> </mat-form-field>
+								</div>
+								<div class="col-md-3">
+									<mat-form-field class="example-full-width"> <input
+										name="gas" required matInput placeholder="Combustible"
+										[(ngModel)]="vehicle.gas"> </mat-form-field>
+								</div>
+								<div class="col-md-3">
+									<mat-form-field class="example-full-width"> <input
+										name="year" matInput placeholder="Año"
+										[(ngModel)]="vehicle.year"> </mat-form-field>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<mat-form-field class="example-full-width"> <input
+										matInput name="brand" placeholder="Marca"
+										[(ngModel)]="vehicle.brand"> </mat-form-field>
+								</div>
+								<div class="col-md-3">
+									<mat-form-field class="example-full-width"> <input
+										name="model" matInput placeholder="Modelo"
+										[(ngModel)]="vehicle.model"> </mat-form-field>
+								</div>
+								<div class="col-md-3">
+									<mat-form-field class="example-full-width"> <mat-select
+										name="chofer" [compareWith]="compareFn" placeholder="Chofer"
+										[(ngModel)]="vehicle.chofer"> <mat-option
+										*ngFor="let chofer of drivers" [value]="chofer">
+									{{ chofer.name }} </mat-option> </mat-select> </mat-form-field>
+								</div>
+								<div class="col-md-3">
+									<mat-form-field class="example-full-width"> <input
+										matInput name="details" placeholder="Detalle"
+										[(ngModel)]="vehicle.details" required> </mat-form-field>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<mat-form-field class="example-full-width"> <input
+										matInput name="soap" required type="date"
+										placeholder="Vencimiento SOAP"
+										[ngModel]="vehicle.soap_date | date:'yyyy-MM-dd'"
+										(ngModelChange)="vehicle.soap_date = $event"> </mat-form-field>
+								</div>
+								<div class="col-md-3">
+									<mat-form-field class="example-full-width"> <input
+										name="tyres" matInput placeholder="Ruedas"
+										[(ngModel)]="vehicle.tyres"> </mat-form-field>
+								</div>
+								<div class="col-md-3">
+									<mat-form-field class="example-full-width"> <input
+										matInput name="maitenance" required type="date"
+										placeholder="Última mantención"
+										[ngModel]="vehicle.last_maintenance | date:'yyyy-MM-dd'"
+										(ngModelChange)="vehicle.last_maintenance = $event"> </mat-form-field>
+								</div>
+								<div class="col-md-3">
+									<mat-form-field class="example-full-width"> <input
+										name="tec" matInput required type="date"
+										placeholder="Revisión técnica"
+										[ngModel]="vehicle.next_inspection | date:'yyyy-MM-dd'"
+										(ngModelChange)="vehicle.next_inspection = $event"> </mat-form-field>
+								</div>
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="example-full-width"> <input type="checkbox"
+											matInput name="onRepair" placeholder="En Reparacion"
+											[(ngModel)]="vehicle.on_repair"> </mat-form-field>
+									</div>
+								</div>
+							</div>
 							<button mat-raised-button color="primary" class="pull-right"
 								type="submit" [disabled]="f.invalid">Guardar</button>
 						</form>

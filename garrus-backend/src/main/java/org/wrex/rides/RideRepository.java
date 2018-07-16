@@ -30,4 +30,5 @@ public interface RideRepository extends CrudRepository<Ride, Integer> {
 			+ " order by ride.start DESC")
 	List<Ride> findByOptionalParameter(@Param("plate") String plate, @Param("rutChofer") String rutChofer,
 									   @Param("dateStart") Date dateStart, @Param("dateEnd") Date dateEnd);
+	
 }

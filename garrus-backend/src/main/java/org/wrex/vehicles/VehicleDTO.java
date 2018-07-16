@@ -28,11 +28,14 @@ public class VehicleDTO implements Serializable {
 	@JsonProperty("soap_date")
 	private String soapDate;
 	private String tyres;
+
+	@JsonProperty("on_repair")
+	private boolean onRepair;
+	
 	@JsonProperty("last_maintenance")
 	private String lastMaintenance;
 	 @JsonProperty("next_inspection")
 	private String nextInspection;
-	 private boolean onRepair;
 
 	 
 	private List<EntryDTO> history;
