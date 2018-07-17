@@ -53,7 +53,7 @@ LOCK TABLES `vehicle` WRITE;
 INSERT INTO `vehicle` VALUES ('FYJA-44','gasolina','Camioneta','coche alcalde','2017','Honda','Hilux','22222222-2','2019-02-26','214-55 R18','2018-06-26','2018-10-26',0);
 INSERT INTO `vehicle` VALUES ('JYSH-22','diesel','Bus','Bus escolar','2017','Honda','Hilux','22222222-2','2019-02-26','214-55 R18','2018-06-26','2018-10-26',0);
 INSERT INTO `vehicle` VALUES ('UKWH-33','gasolina','Tractor','JAC','2017','Honda','Hilux','11111111-1','2019-02-26','214-55 R18','2018-06-26','2018-10-26',0);
-INSERT INTO `vehicle` VALUES ('LAKN-55','gasolina','Ambulancia','Ram payne','2017','Honda','Hilux','11111111-1','2019-02-26','214-55 R18','2018-06-26','2018-10-26',0);
+INSERT INTO `vehicle` VALUES ('LAKN-55','gasolina','Ambulancia','Ram payne','2017','Honda','Hilux','11111111-1','2019-02-26','214-55 R18','2018-06-26','2018-10-26',1);
 UNLOCK TABLES;
 
 --
@@ -71,11 +71,12 @@ DROP TABLE IF EXISTS `driver`;
 CREATE TABLE `driver` (
   `rut` varchar(10) NOT NULL ,
   `name` varchar(45) NULL,
+  `license_expire_date` date NULL,
 	PRIMARY KEY (`rut`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `driver` values ('22222222-2', 'Walter');
-INSERT INTO `driver` values ('11111111-1', 'Danilo');
+INSERT INTO `driver` values ('22222222-2', 'Walter','2019-02-26');
+INSERT INTO `driver` values ('11111111-1', 'Danilo','2019-02-26');
 
 DROP TABLE IF EXISTS `entry`;
 CREATE TABLE `entry` (
@@ -162,4 +163,16 @@ INSERT INTO `vehicle` VALUES ('JYSH-22','diesel','Bus','Bus escolar','2017','Hon
 INSERT INTO `ride` values ('1','FYJA-44','11111111-1','2018-06-26 10:00:00','2018-06-26 14:00:00','VIaje a natales','120');
 INSERT INTO `ride` values ('2','FYJA-44','11111111-1','2018-06-27 10:00:00','2018-06-28 14:00:00','VIaje a PUQ','800');
 INSERT INTO `ride` values ('3','FYJA-44','22222222-2','2018-06-29 10:00:00','2018-06-29 14:00:00','VIaje a guido','100');
-INSERT INTO `ride` values ('4','JYSH-22','22222222-2','2018-06-30 10:00:00','2018-06-30 14:00:00','VIaje a guido','100');
+INSERT INTO `ride` values ('4','JYSH-22','22222222-2','2018-07-15 10:00:00','2018-07-19 14:00:00','VIaje a guido','100');
+
+
+DROP TABLE IF EXISTS `leaves`;
+CREATE TABLE `leaves` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `rut` varchar(10) NOT NULL ,
+  `start` datetime NOT NULL ,
+  `end` datetime NOT NULL ,  
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT into `leaves` values (1,'22222222-2','2018-07-20 10:00:00','2018-07-21 19:00:00'); 

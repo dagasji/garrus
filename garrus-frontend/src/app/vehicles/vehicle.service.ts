@@ -1,6 +1,7 @@
 import { Entry } from './entry';
 import {Injectable} from '@angular/core';
 import {Vehicle} from './vehicle';
+import { HttpParams } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -27,6 +28,11 @@ export class VehicleService {
       catchError(this.handleError('getHeroes', []))
     );
     //    this.messageService.add('VehicleService: fetched vehicles {}');
+  }
+  
+  getAvaliableVehicles(start: string, end: string): Observable<Vehicle[]> {
+    const url = `${this.vehiclesURL}/vehicle/listAvaliable?start=${start}&end=${end}`;
+    return this.http.get<Vehicle[]>(url);
   }
 
   getVehicle(plate: string): Observable<Vehicle> {

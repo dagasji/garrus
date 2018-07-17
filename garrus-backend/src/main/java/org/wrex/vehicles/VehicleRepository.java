@@ -1,6 +1,8 @@
 package org.wrex.vehicles;
 
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 
@@ -15,4 +17,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface VehicleRepository extends CrudRepository<Vehicle,String>{
 
+	List<Vehicle> findByOnRepair(boolean onRepair);
 }

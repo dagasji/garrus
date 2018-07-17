@@ -1,3 +1,4 @@
+import { RidesDetailComponent } from './rides-detail/rides-detail.component';
 import { RidesListComponent } from './rides-list/rides-list.component';
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
@@ -17,6 +18,15 @@ const routes: Routes = [
   },{
     path: 'rideList',
     component: RidesListComponent,
+  },{
+    path: 'rideList/ride/:id',
+    component: RidesDetailComponent,
+  } ,{
+    path: 'ride/:id',
+    component: RidesDetailComponent,
+  },{
+    path: 'newRide',
+    component: RidesDetailComponent,
   }, {
     path: 'detail/:plate',
     component: VehicleDetailComponent

@@ -1,3 +1,61 @@
-<p>
-  rides-detail works!
-</p>
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header card-header-danger">
+						<h4 class="card-title ">{{tittle}}</h4>
+					</div>
+						<form #f="ngForm" novalidate (ngSubmit)="save()">
+					<div class="card-body">
+							<div class="row">
+								<div class="col-md-3">
+									<mat-form-field> <input type="datetime-local" #start
+										matInput required name="start" placeholder="Inicio"
+										[ngModel]="ride.start"
+										(ngModelChange)="dateStartChange($event)"> </mat-form-field>
+								</div>
+								<div class="col-md-3">
+									<mat-form-field> <input type="datetime-local" #start
+										matInput required name="end" placeholder="Final"
+										[ngModel]="ride.end" (ngModelChange)="dateEndChange($event)">
+									</mat-form-field>
+								</div>
+								<div class="col-md-3">
+									<mat-form-field> <mat-select name="driver"
+										 [compareWith]="compareDriver" placeholder="Chofer"
+										[(ngModel)]="ride.chofer"> <mat-option
+										*ngFor="let chofer of drivers" [value]="chofer">
+									{{ chofer.name }} </mat-option> </mat-select> </mat-form-field>
+								</div>
+								<div class="col-md-3">
+									<mat-form-field> <mat-select name="vehicle"
+										[compareWith]="compareVehicle" placeholder="Vehiculo"
+										[(ngModel)]="ride.vehicle"> <mat-option
+										*ngFor="let vehicle of vehicles" [value]="vehicle">
+									{{ vehicle.details}} </mat-option> </mat-select> </mat-form-field>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+											<mat-form-field> <input type="text"
+										matInput required name="details" placeholder="Detalles"
+											[(ngModel)]="ride.details">
+									</mat-form-field>
+									</div>
+									<div class="col-md-2">
+											<mat-form-field> <input 
+										matInput required name="distance" placeholder="Distancia"
+											[(ngModel)]="ride.distance">
+									</mat-form-field>
+									</div>
+								</div>
+							</div>
+					</div>
+						<button mat-raised-button color="primary" class="pull-right"
+									type="submit" [disabled]="f.invalid">Guardar</button>
+						</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

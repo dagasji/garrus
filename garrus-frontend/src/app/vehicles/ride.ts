@@ -3,8 +3,8 @@ import {Vehicle} from './vehicle';
 export class Ride {
   id: number;
   plate: string;
-  start: Date;
-  end: Date;
+  start: string;
+  end: string;
   chofer: Driver;
   vehicle: Vehicle;
   details: string;

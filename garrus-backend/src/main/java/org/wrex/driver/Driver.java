@@ -1,5 +1,7 @@
 package org.wrex.driver;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,7 +15,12 @@ public class Driver {
 	@Column
 	private String name;
 	
+	@Column
+	private Date licenseExpireDate;
 	
+	
+	
+	//permisos de conductor por rango de fechas.
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -48,6 +55,14 @@ public class Driver {
 		} else if (!rut.equals(other.rut))
 			return false;
 		return true;
+	}
+
+	public Date getLicenseExpireDate() {
+		return licenseExpireDate;
+	}
+
+	public void setLicenseExpireDate(Date licenseExpireDate) {
+		this.licenseExpireDate = licenseExpireDate;
 	}
 
 	public String getRut() {

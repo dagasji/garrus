@@ -48,7 +48,7 @@ public class RideController {
 		
 	}
 
-	@RequestMapping("/driver/{idRide}")
+	@RequestMapping("/ride/{idRide}")
 	public RideDTO getById(@PathVariable Integer idRide) {
 		return RideMapper.INSTANCE.entityToDTO(repo.findById(idRide).get());
 	}

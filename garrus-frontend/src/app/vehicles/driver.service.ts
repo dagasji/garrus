@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Driver} from './driver';
+import { HttpParams } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -25,6 +26,12 @@ export class DriverService {
       tap(heroes => this.log(`fetched heroes ${url}`)),
       catchError(this.handleError('getHeroes', []))
     );
+    //    this.messageService.add('DriverService: fetched Drivers {}');
+  }
+  
+  getAvaliable(start: string, end: string): Observable<Driver[]> {
+    const url = `${this.driverURL}listAvaliable?start=${start}&end=${end}`;
+    return this.http.get<Driver[]>(url);
     //    this.messageService.add('DriverService: fetched Drivers {}');
   }
 

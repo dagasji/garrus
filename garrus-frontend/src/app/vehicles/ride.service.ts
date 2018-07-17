@@ -36,7 +36,7 @@ export class RideService {
     return this.http.get<Ride[]>(url);
   }
 
-  getById(id: number): Observable<Ride> {
+  getById(id: string): Observable<Ride> {
     const url = `${this.URL}${id}`;
     return this.http.get<Ride>(url);
   }
