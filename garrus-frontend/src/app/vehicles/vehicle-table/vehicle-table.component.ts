@@ -11,36 +11,15 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class VehicleTableComponent implements OnInit {
 
-  dataSource = new MatTableDataSource();
-  displayedColumns = ['plate', 'type', 'gas', 'details', 'chofer', 'actions'];
+  
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  constructor(private vehicleService: VehicleService, public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
-    this.load();
   }
 
-  load() {
-     this.vehicleService.getVehicles()
-      .subscribe(result => {
-        this.dataSource.data = result as Vehicle[];
-      });
-  }
-  
-  onDelete(vehicle: Vehicle): void {
-    if (confirm("¿Estás seguro de que deseas eliminar el vehiculo con patente " + vehicle.plate + "?")) {
-      this.vehicleService.delete(vehicle.plate).subscribe(data => this.load());
-    }
-  }
 
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
-  }
-
+ 
 
 }
 

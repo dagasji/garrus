@@ -6,8 +6,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.wrex.mappers.DateMapper;
 import org.wrex.mappers.DateTimeMapper;
+import org.wrex.vehicles.VehicleMapper;
 
-@Mapper
+@Mapper(uses=VehicleMapper.class)
 public interface RideMapper {
 	RideMapper INSTANCE = Mappers.getMapper( RideMapper.class );
     

@@ -1,7 +1,3 @@
-<div class="main-content">
-
-	<app-navigation></app-navigation>
-
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
@@ -50,31 +46,9 @@
 						<h4 class="card-title">Vehiculos disponibles</h4>
 					</div>
 					<div class="card-body table-responsive">
-						<table class="table table-hover">
-							<thead class="text-warning">
-								<th>Patente</th>
-								<th>Descripcion</th>
-								<th>Accion</th>
-							</thead>
-							<tbody>
-								<tr>
-									<td>HJUH-89</td>
-									<td>4x4</td>
-									<td><button mat-raised-button color="primary">Ver</button></td>
-								</tr>
-								<tr>
-									<td>HJUH-89</td>
-									<td>4x4</td>
-									<td><button mat-raised-button color="primary">Ver</button></td>
-								<tr>
-									<td>HJUH-89</td>
-									<td>4x4</td>
-								</tr>
-							</tbody>
-						</table>
+							<app-vehicle-list [showActions]="false" [showFilter]="false" display="avaliable"></app-vehicle-list>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>

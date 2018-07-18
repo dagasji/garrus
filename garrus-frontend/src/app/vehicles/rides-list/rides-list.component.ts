@@ -34,6 +34,10 @@ export class RidesListComponent implements OnInit {
            this.rideService.getNext().subscribe(res => this.dataSource.data = res as Ride[]);
           break;
         }
+        case 'past': {
+           this.rideService.getPast().subscribe(res => this.dataSource.data = res as Ride[]);
+          break;
+        }
         default: {
            this.rideService.getAll().subscribe(res => this.dataSource.data = res as Ride[]);
         }

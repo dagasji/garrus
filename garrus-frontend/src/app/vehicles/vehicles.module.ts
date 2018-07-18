@@ -27,6 +27,11 @@ import { RidesListComponent } from './rides-list/rides-list.component';
 import { RidesDetailComponent } from './rides-detail/rides-detail.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { RideService } from './ride.service';
+import { RideDashboardComponent } from './ride-dashboard/ride-dashboard.component';
+import { RideComponent } from './ride/ride.component';
+import { VehicleComponent } from './vehicle/vehicle.component';
+import { DriverTableComponent } from './driver-table/driver-table.component';
+import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 
 @NgModule({
   imports: [
@@ -47,7 +52,7 @@ import { RideService } from './ride.service';
     MatPaginatorModule
   ],
   exports:  [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent,VehiclesDashboardComponent],
-  declarations: [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent, VehiclesDashboardComponent, RidesListComponent, RidesDetailComponent, NavigationComponent],
+  declarations: [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent, VehiclesDashboardComponent, RidesListComponent, RidesDetailComponent, NavigationComponent, RideDashboardComponent, RideComponent, VehicleComponent, DriverTableComponent, VehicleListComponent],
   providers: [ VehicleService, DriverService, RideService],
 })
 export class VehiclesModule { }

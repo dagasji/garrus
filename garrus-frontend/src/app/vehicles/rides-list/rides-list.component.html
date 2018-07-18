@@ -26,7 +26,7 @@
 	
 	<ng-container matColumnDef="actions"> 
 		<mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
-		<mat-cell *matCellDef="let ride"> <button mat-raised-button color="primary" routerLink="ride/{{ride.id}}">Ver</button> </mat-cell> 
+		<mat-cell *matCellDef="let ride"> <button mat-raised-button color="primary" routerLink="{{ride.id}}">Ver</button> </mat-cell> 
 	</ng-container>
 	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 	<mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>

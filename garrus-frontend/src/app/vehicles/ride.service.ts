@@ -35,6 +35,11 @@ export class RideService {
     const url = `${this.URL}next`;
     return this.http.get<Ride[]>(url);
   }
+  
+    getPast(): Observable<Ride[]> {
+    const url = `${this.URL}past`;
+    return this.http.get<Ride[]>(url);
+  }
 
   getById(id: string): Observable<Ride> {
     const url = `${this.URL}${id}`;

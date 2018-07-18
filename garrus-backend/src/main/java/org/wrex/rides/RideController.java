@@ -23,7 +23,10 @@ public class RideController {
 
 	@RequestMapping(value = "/ride/", method = RequestMethod.POST)
 	public void addRide(@RequestBody RideDTO ride) {
-		repo.save(RideMapper.INSTANCE.dtoToEntity(ride));
+		Ride ride2 = RideMapper.INSTANCE.dtoToEntity(ride);
+		ride2.setPlate(ride.getVehicle().getPlate());
+		ride2.setRutChofer(ride.getChofer().getRut());
+		repo.save(ride2);
 	}
 	
 	@RequestMapping(value = "/ride/{idRide}", method = RequestMethod.PUT)
@@ -45,6 +48,12 @@ public class RideController {
 	@RequestMapping("/ride/next")
 	public List<RideDTO> getNext() {
 		return RideMapper.INSTANCE.listToDTOList(IterableUtils.toList(repo.findAll()).stream().filter(p->p.getStart().after(new Date())).collect(Collectors.toList()));
+		
+	}
+	
+	@RequestMapping("/ride/past")
+	public List<RideDTO> getPast() {
+		return RideMapper.INSTANCE.listToDTOList(IterableUtils.toList(repo.findAll()).stream().filter(p->p.getEnd().before(new Date())).collect(Collectors.toList()));
 		
 	}
 
