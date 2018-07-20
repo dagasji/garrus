@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.apache.commons.collections4.IterableUtils;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,19 +42,23 @@ public class RideController {
 	
 	@RequestMapping("/ride/active")
 	public List<RideDTO> getActive() {
-		Date now = new Date();
-		return RideMapper.INSTANCE.listToDTOList(IterableUtils.toList(repo.findAll()).stream().filter(p->p.getStart().before(now) && p.getEnd().after(now)).collect(Collectors.toList()));
+		Date now = DateTime.now().toDate();
+		return RideMapper.INSTANCE.listToDTOList(repo.findByOptionalParameter(null, null, now, now));
+//		return RideMapper.INSTANCE.listToDTOList(IterableUtils.toList(repo.findAll()).stream().filter(p->p.getStart().before(now) && p.getEnd().after(now)).collect(Collectors.toList()));
 	}
 	
 	@RequestMapping("/ride/next")
 	public List<RideDTO> getNext() {
-		return RideMapper.INSTANCE.listToDTOList(IterableUtils.toList(repo.findAll()).stream().filter(p->p.getStart().after(new Date())).collect(Collectors.toList()));
+//		Date now = DateTime.now().toDate();
+//		return RideMapper.INSTANCE.listToDTOList(repo.findByOptionalParameter(null, null, now, now));
+		return RideMapper.INSTANCE.listToDTOList(IterableUtils.toList(repo.findAll()).stream().filter(p->p.getStart().after(DateTime.now().toDate())).collect(Collectors.toList()));
 		
 	}
 	
 	@RequestMapping("/ride/past")
 	public List<RideDTO> getPast() {
-		return RideMapper.INSTANCE.listToDTOList(IterableUtils.toList(repo.findAll()).stream().filter(p->p.getEnd().before(new Date())).collect(Collectors.toList()));
+		return RideMapper.INSTANCE.listToDTOList(repo.findByEndBeforeOrderByStartDesc(DateTime.now().toDate()));
+//		return RideMapper.INSTANCE.listToDTOList(IterableUtils.toList(repo.findAll()).stream().filter(p->p.getEnd().before(DateTime.now().toDate())).collect(Collectors.toList()));
 		
 	}
 

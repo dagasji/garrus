@@ -8,7 +8,7 @@ import org.wrex.mappers.DateMapper;
 import org.wrex.mappers.DateTimeMapper;
 import org.wrex.vehicles.VehicleMapper;
 
-@Mapper(uses=VehicleMapper.class)
+@Mapper(uses= {VehicleMapper.class,DateTimeMapper.class})
 public interface RideMapper {
 	RideMapper INSTANCE = Mappers.getMapper( RideMapper.class );
     

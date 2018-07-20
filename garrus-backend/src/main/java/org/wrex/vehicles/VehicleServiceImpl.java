@@ -2,6 +2,8 @@ package org.wrex.vehicles;
 
 
 import java.util.List;
+import java.util.Optional;
+
 import org.apache.commons.collections4.IterableUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,12 +75,12 @@ public class VehicleServiceImpl implements VehicleService{
 			logger.debug("load(String plate={}) - start", plate);
 		}
 
-		Vehicle ve = vehicleDao.findById(plate).get();
-		if (ve != null) {
+		Optional<Vehicle> ve = vehicleDao.findById(plate);
+		if (ve.isPresent()) {
 			if (logger.isDebugEnabled()) {
 				logger.debug("load() - end - return value={}",ve);
 			}
-			return VehicleMapper.INSTANCE.entityToDTO(ve);
+			return VehicleMapper.INSTANCE.entityToDTO(ve.get());
 		}
 		if (logger.isDebugEnabled()) {
 			logger.debug("load() - end - return value={null}");

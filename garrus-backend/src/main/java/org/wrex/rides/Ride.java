@@ -21,10 +21,12 @@ public class Ride {
 	@GeneratedValue
 	private Integer id;
 	
+
 	@Column(columnDefinition="DATETIME")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date start;
 	
+
 	@Column(columnDefinition="DATETIME")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date end;

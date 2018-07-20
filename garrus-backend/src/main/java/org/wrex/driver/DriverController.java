@@ -34,8 +34,8 @@ public class DriverController {
 	
 
 	@RequestMapping("/driver/detail/{rut}")
-	public DriverDTO getByPlate(@PathVariable("rut") String plate) {
-		return service.getDriverByRut(plate);
+	public DriverDTO getByRut(@PathVariable("rut") String rut) {
+		return service.getDriverByRut(rut);
 	}
    
    
