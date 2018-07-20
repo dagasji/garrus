@@ -7,6 +7,7 @@ import {VehicleService} from '../vehicle.service';
 import {DriverService} from '../driver.service';
 import {Vehicle} from '../vehicle';
 import {Driver} from '../driver';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-vehicle-detail',
@@ -23,7 +24,8 @@ export class VehicleDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private heroService: VehicleService,
     private driverService: DriverService,
-    private location: Location) {}
+    private location: Location,
+    private toastr: ToastrService) {}
 
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('plate') != null) {
@@ -45,7 +47,7 @@ export class VehicleDetailComponent implements OnInit {
 
   save(): void {
     this.heroService.push(this.vehicle);
-    alert("Cambios guardados con éxito.");
+    this.toastr.success("Datos guardados con éxito.");
     if (this.disabledPlate === false) {
       this.disabledPlate = true;
     }

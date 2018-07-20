@@ -5,9 +5,12 @@ import {RideService} from '../ride.service';
 import {Vehicle} from '../vehicle';
 import {VehicleService} from '../vehicle.service';
 import {Component, OnInit, Input} from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
+import { NotificationsComponent } from '../../notifications/notifications.component';
 
 @Component({
   selector: 'app-rides-detail',
@@ -24,9 +27,16 @@ export class RidesDetailComponent implements OnInit {
   drivers: Driver[];
   vehicles: Vehicle[];
   tittle = 'Nuevo viaje';
+  mySubject = new Subject();
 
   constructor(private rideService: RideService, private vehicleService: VehicleService, private driverService: DriverService,
-    private route: ActivatedRoute, ) {}
+    private route: ActivatedRoute, private toastr: ToastrService) {
+      this.mySubject
+      .debounceTime(500)
+      .subscribe(val => {
+        this.reloadData();
+      });
+    }
 
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('id')) {
@@ -37,22 +47,22 @@ export class RidesDetailComponent implements OnInit {
 
   dateStartChange(event) {
     this.dateStart = event;
-    this.reloadData();
+    this.mySubject.next(event);
   }
 
   hourStartChange(event) {
     this.hourStart = event;
-    this.reloadData();
+    this.mySubject.next(event);
   }
 
   dateEndChange(event) {
     this.dateEnd = event;
-    this.reloadData();
+    this.mySubject.next(event);
   }
 
   hourEndChange(event) {
     this.hourEnd = event;
-    this.reloadData();
+    this.mySubject.next(event);
   }
   
   reloadData() {
@@ -60,7 +70,13 @@ export class RidesDetailComponent implements OnInit {
     this.ride.end  = `${this.dateEnd}T${this.hourEnd}:00`;
     if (this.ride.start.length === 19 && this.ride.end.length === 19) {
       this.driverService.getAvaliable(this.ride.start, this.ride.end).subscribe(res => this.drivers = res);
+      if (this.drivers == null || this.drivers.length === 0) {
+        this.toastr.warning("No hay conductores disponibles a esas horas");
+      }
       this.vehicleService.getAvaliableVehicles(this.ride.start, this.ride.end).subscribe(res => this.vehicles = res);
+      if (this.vehicles == null ||  this.vehicles.length === 0){
+        this.toastr.warning("No hay vehiculos disponibles a esas horas");
+      }
     }
   }
 
@@ -75,6 +91,14 @@ export class RidesDetailComponent implements OnInit {
 
   save() {
     this.rideService.push(this.ride).subscribe(res => {alert('Viaje guardado con éxito')});
+    this.toastr.success("Datos guardados con éxito.");
+    this.ride = new Ride();
+    this.drivers = null;
+    this.vehicles = null;
+    this.dateEnd= null;
+    this.dateStart= null;
+    this.hourEnd= null;
+    this.hourEnd= null;
   }
 
 }

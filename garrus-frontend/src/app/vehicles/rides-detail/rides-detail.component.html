@@ -12,14 +12,14 @@
 							<div class="col-md-2">
 								<mat-form-field> <input type="date"
 									#start matInput required name="datestart" placeholder="Fecha Inicio"
-									[ngModel]="dateStart"
+									[ngModel]="dateStart" 
 									(ngModelChange)="dateStartChange($event)"> </mat-form-field>
 							</div>
 							<div class="col-md-2">
 								<mat-form-field> <input type="time" 
 									#start matInput required name="hourstart" placeholder="Hora Inicio"
 									[ngModel]="hourStart"
-									(ngModelChange)="hourStartChange($event)"> </mat-form-field>
+									(ngModelChange)="hourStartChange($event)" > </mat-form-field>
 							</div>
 							
 							<div class="col-md-2">

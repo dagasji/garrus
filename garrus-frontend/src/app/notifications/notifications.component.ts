@@ -7,16 +7,21 @@ declare var $: any;
 })
 export class NotificationsComponent implements OnInit {
 
-  static showNotification(from, align, message) {
-    const type = ['', 'info', 'success', 'warning', 'danger'];
-
-    const color = Math.floor((Math.random() * 4) + 1);
+  /** 
+   * Shows a closable notification on scree.
+   * @argument from Top or bottom.
+   * @argument align left, right or center
+   * @argument message Message to display
+   * @argument type info, success, warning or danger
+  */
+  static showNotification(from, align, message, type) {
+    //const type = ['', 'info', 'success', 'warning', 'danger'];
 
     $.notify({
       icon: "notifications",
       message: message
     }, {
-        type: type[color],
+        type: type,
         timer: 4000,
         placement: {
           from: from,

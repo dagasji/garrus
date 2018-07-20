@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate([redirect]);
       }
       else{ 
-        NotificationsComponent.showNotification('top','right','Datos incorrrectos');
+        NotificationsComponent.showNotification('top','right','Datos incorrrectos','warning');
       }
     });
   }

@@ -29,6 +29,8 @@ import {VehiclesModule} from './vehicles/vehicles.module';
 import { LoginComponent } from './login/login.component'
 import { UserService } from './user-profile/user.service';
 import { AdminUsersModule } from './admin-users/admin-users.module';
+import { ToastrModule } from 'ngx-toastr';
+
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -41,6 +43,11 @@ import {MatInputModule} from '@angular/material/input';
     HttpModule,
     ComponentsModule,
     RouterModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
     AppRoutingModule,
     MatButtonModule,
     MatInputModule,
