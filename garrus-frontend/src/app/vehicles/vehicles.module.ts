@@ -22,6 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {CustomersRoutingModule} from './vehicles-routing.module';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { VehiclesDashboardComponent } from './vehicles-dashboard/vehicles-dashboard.component';
 import { RidesListComponent } from './rides-list/rides-list.component';
 import { RidesDetailComponent } from './rides-detail/rides-detail.component';
@@ -49,7 +50,8 @@ import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
     MatIconModule,
     MatDialogModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCheckboxModule,
   ],
   exports:  [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent,VehiclesDashboardComponent],
   declarations: [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent, VehiclesDashboardComponent, RidesListComponent, RidesDetailComponent, NavigationComponent, RideDashboardComponent, RideComponent, VehicleComponent, DriverTableComponent, VehicleListComponent],

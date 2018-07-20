@@ -94,9 +94,9 @@ ADD CONSTRAINT `plateFK`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
   
-INSERT INTO `entry` values (1,'Reparacion 1','FYJA-44','2019-02-26');
-INSERT INTO `entry` values (2,'Reparacion 2','FYJA-44','2019-02-27');
-INSERT INTO `entry` values (3,'Reparacion 3','FYJA-44','2019-03-12');
+INSERT INTO `entry` values (1,'Cambio de aceite 10W40','FYJA-44','2018-07-20');
+INSERT INTO `entry` values (2,'Recarga de combustible 20.000$','FYJA-44','2018-07-21');
+INSERT INTO `entry` values (3,'Revisión de frenos.','FYJA-44','2018-07-22');
 
 
 DROP TABLE IF EXISTS `division`;

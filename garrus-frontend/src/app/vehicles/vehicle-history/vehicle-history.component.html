@@ -31,11 +31,11 @@
 					<div class="card-body">
 						<form #f="ngForm" novalidate (ngSubmit)="addEntry()">
 							<mat-form-field> <input matInput type="date"
-								name="date" placeholder="Fecha reparación"
+								name="date" placeholder="Fecha"
 								[ngModel]="entry.date| date:'yyyy-MM-dd'"
 								(ngModelChange)="entry.date = $event" required> </mat-form-field>
 							<mat-form-field> <textarea matInput [cols]="20"
-								required name="info" placeholder="Detalle reparación"
+								required name="info" placeholder="Detalle"
 								[(ngModel)]="entry.info" matTextareaAutosize></textarea> </mat-form-field>
 							<button mat-raised-button color="primary" class="pull-right"
 								type="submit" [disabled]="f.invalid">Agregar</button>
