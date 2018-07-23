@@ -1,0 +1,27 @@
+<div class="example-header" *ngIf="showFilter">
+	<mat-form-field>
+		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar...">
+	</mat-form-field>
+</div>
+
+<mat-table [dataSource]="dataSource">
+	<ng-container matColumnDef="rut">
+		<mat-header-cell *matHeaderCellDef>
+			Rut </mat-header-cell>
+		<mat-cell *matCellDef="let driver">
+			{{driver.rut}} </mat-cell>
+	</ng-container>
+	<ng-container matColumnDef="name">
+		<mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+		<mat-cell *matCellDef="let driver"> {{driver.name}} </mat-cell>
+	</ng-container>
+	<ng-container matColumnDef="actions">
+		<mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+		<mat-cell *matCellDef="let driver">
+			<button mat-raised-button color="primary" routerLink="{{driver.rut}}" title="Editar" class="actionButton">Editar</button>
+			<button mat-raised-button color="primary" (click)="onDelete(driver)" title="Eliminar" class="actionButton">Borrar</button>
+		</mat-cell>
+	</ng-container>
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

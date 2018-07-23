@@ -10,9 +10,9 @@ public class LeaveDTO {
 	
 	private String rut;
 	
-	private Date start;
+	private String start;
 	
-	private Date end;
+	private String end;
 
 	private DriverDTO chofer;
 	
@@ -72,19 +72,19 @@ public class LeaveDTO {
 		this.rut = rut;
 	}
 
-	public Date getStart() {
+	public String getStart() {
 		return start;
 	}
 
-	public void setStart(Date start) {
+	public void setStart(String start) {
 		this.start = start;
 	}
 
-	public Date getEnd() {
+	public String getEnd() {
 		return end;
 	}
 
-	public void setEnd(Date end) {
+	public void setEnd(String end) {
 		this.end = end;
 	}
 

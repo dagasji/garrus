@@ -4,8 +4,9 @@ import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import org.wrex.mappers.DateMapper;
 
-@Mapper
+@Mapper(uses=DateMapper.class)
 public interface LeaveMapper {
 	LeaveMapper INSTANCE = Mappers.getMapper( LeaveMapper.class );
     

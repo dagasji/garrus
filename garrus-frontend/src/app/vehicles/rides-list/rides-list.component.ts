@@ -44,6 +44,12 @@ export class RidesListComponent implements OnInit {
       }
   }
 
+  onDelete(ride: Ride){
+    if(confirm("¿Estás seguro de que deseas eliminar el viaje?")) {
+      this.rideService.delete(ride.id).subscribe(data => this.load());
+    }
+  }
+
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches

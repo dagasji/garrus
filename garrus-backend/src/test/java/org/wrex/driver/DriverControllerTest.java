@@ -45,6 +45,18 @@ public class DriverControllerTest {
 		Assert.assertTrue(res.isEmpty());
 	}
 	
+	@Test
+	public void testGetAvaliableLeave() {
+		List<DriverDTO> res = rest.getAvaliable("2018-07-28T11:01:00", "2018-07-28T15:59:00");
+		Assert.assertEquals("Danilo",res.get(0).getName());
+	}
+	
+	@Test
+	public void testGetAvaliableLeave2() {
+		List<DriverDTO> res = rest.getAvaliable("2018-07-29T11:01:00", "2018-07-29T15:59:00");
+		Assert.assertEquals("Danilo",res.get(0).getName());
+	}
+	
 
 	@Test
 	public void testGetAvaliableOne() {

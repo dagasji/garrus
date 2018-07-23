@@ -6,7 +6,7 @@
 						<h4 class="card-title">Viajes en curso</h4>
 					</div>
 					<div class="card-body table-responsive">			   
-						<app-rides-list display="active" ></app-rides-list>
+						<app-rides-list display="active" columns="vehicle,chofer,start,end,details"></app-rides-list>
 					</div>
 				</div>
 			</div>
@@ -18,25 +18,7 @@
 						<h4 class="card-title">Choferes disponibles</h4>
 					</div>
 					<div class="card-body table-responsive">
-						<table class="table table-hover">
-							<thead class="text-warning">
-								<th>Nombre</th>
-								<th>Accion</th>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Walter</td>
-									<td><button mat-raised-button color="primary">Ver</button></td>
-								</tr>
-								<tr>
-									<td>Danilo</td>
-									<td><button mat-raised-button color="primary">Ver</button></td>
-								<tr>
-									<td>Javier</td>
-									<td><button mat-raised-button color="primary">Ver</button></td>
-								</tr>
-							</tbody>
-						</table>
+						<app-driver-list display='avaliable'></app-driver-list>
 					</div>
 				</div>
 			</div>

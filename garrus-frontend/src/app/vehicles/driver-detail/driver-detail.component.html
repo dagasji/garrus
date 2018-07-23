@@ -1,0 +1,31 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header card-header-danger">
+					<h4 class="card-title ">Detalles conductor {{driver.name}}
+					</h4>
+				</div>
+				<div class="card-body">
+					<form #f="ngForm" novalidate (ngSubmit)="save()">
+						<div class="row">
+							<div class="col-md-3">
+								<mat-form-field class="example-full-width">
+									<input matInput [disabled]="disableRut" required name="rut" placeholder="Rut" [(ngModel)]="driver.rut"> </mat-form-field>
+							</div>
+							<div class="col-md-3">
+								<mat-form-field class="example-full-width">
+									<input name="name" required matInput placeholder="name" [(ngModel)]="driver.name"> </mat-form-field>
+							</div>
+						</div>
+						<div class="row">
+							<button mat-raised-button color="primary" class="pull-right" type="submit" [disabled]="f.invalid">Guardar</button>
+						</div>
+					</form>
+					<app-driver-leave [rut] = "driver.rut" *ngIf="disableRut"></app-driver-leave>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>

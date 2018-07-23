@@ -28,6 +28,7 @@ export class RidesDetailComponent implements OnInit {
   vehicles: Vehicle[];
   tittle = 'Nuevo viaje';
   mySubject = new Subject();
+  newRide = true;
 
   constructor(private rideService: RideService, private vehicleService: VehicleService, private driverService: DriverService,
     private route: ActivatedRoute, private toastr: ToastrService) {
@@ -41,7 +42,16 @@ export class RidesDetailComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('id')) {
       this.tittle = 'Detalle viaje'
-      this.rideService.getById(this.route.snapshot.paramMap.get('id')).subscribe(res => this.ride = res);
+      this.rideService.getById(this.route.snapshot.paramMap.get('id')).subscribe(res => {
+        this.ride = res;
+        this.newRide = false;
+        this.dateStart = this.ride.start.split('T')[0];
+        this.hourStart = this.ride.start.split('T')[1];
+        this.dateEnd = this.ride.end.split('T')[0];
+        this.hourEnd = this.ride.end.split('T')[1];
+        this.drivers.push(res.chofer);
+        this.vehicles.push(res.vehicle);
+      });
     }
   }
 

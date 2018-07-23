@@ -68,13 +68,13 @@ public class RideController {
 	}
 	
 	
-	@RequestMapping(value="/driver/{idRide}",method=RequestMethod.DELETE)
+	@RequestMapping(value="/ride/{idRide}",method=RequestMethod.DELETE)
 	public void delate(@PathVariable Integer idRide) {
 		repo.deleteById(idRide);
 	}
 
 
-	@RequestMapping("/driver/find")
+	@RequestMapping("/ride/find")
 	public List<RideDTO> find(@RequestParam(value="plate",required=false) String plate, 
 							  @RequestParam(value="rutChofer",required=false) String rutChofer,
 							  @RequestParam(value="dateStart",required=false) Date dateStart,

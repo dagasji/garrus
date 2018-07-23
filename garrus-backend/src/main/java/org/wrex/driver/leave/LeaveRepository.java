@@ -13,4 +13,6 @@ public interface LeaveRepository extends CrudRepository<Leave,Integer>{
 
 	@Query("select leave from Leave leave where (leave.start <= :dateStart) and (leave.end >= :dateEnd)")
 	List<Leave> findLeavesBetweenDates(@Param("dateStart") Date start, @Param("dateEnd") Date end);
+	
+	List<Leave> findByRutOrderByStartDesc(String rut);
 }

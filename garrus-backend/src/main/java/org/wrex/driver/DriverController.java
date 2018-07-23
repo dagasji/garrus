@@ -8,9 +8,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.wrex.driver.leave.Leave;
+import org.wrex.driver.leave.LeaveDTO;
+import org.wrex.driver.leave.LeaveMapper;
 import org.wrex.driver.leave.LeaveRepository;
 import org.wrex.mappers.DateTimeMapper;
 import org.wrex.rides.Ride;
@@ -55,8 +58,26 @@ public class DriverController {
 		return DriverMapper.INSTANCE.listToDTOList(avaliables);
   	}
   	
-	@RequestMapping("/driver/save")
+	@RequestMapping(value="/driver",method=RequestMethod.POST)
 	public void save(@RequestBody DriverDTO driver) {
 		service.saveDriver(driver);
+	}
+	
+	
+	@RequestMapping(value="/driver/leave",method=RequestMethod.POST)
+	public void addLeave(@RequestBody LeaveDTO leave) {
+		leaveRepo.save(LeaveMapper.INSTANCE.dtoToEntity(leave));
+	}
+	
+	@RequestMapping(value="/driver/leave/{id}",method=RequestMethod.DELETE)
+	public void deleteLeave(@PathVariable("id") Integer id) {
+		leaveRepo.deleteById(id);
+	}
+	
+	
+	
+	@RequestMapping(value="/driver/leave/{rut}",method=RequestMethod.GET)
+	public List<LeaveDTO> getLeaves(@PathVariable("rut") String rut) {
+		return LeaveMapper.INSTANCE.listToDTOList(leaveRepo.findByRutOrderByStartDesc(rut));
 	}
 }

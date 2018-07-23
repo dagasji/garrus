@@ -31,6 +31,11 @@ public class LeaveRepoTest {
 	}
 	
 	@Test
+	public void findByRut() {
+		Assert.assertEquals(new Integer(1), repo.findByRutOrderByStartDesc("22222222-2").get(0).getId());
+	}
+	
+	@Test
 	public void count() {
 		Assert.assertEquals(1, repo.count());
 	}

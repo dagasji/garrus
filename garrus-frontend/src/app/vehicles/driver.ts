@@ -1,4 +1,6 @@
-export interface Driver {
+export class Driver {
   rut: string;
   name: string;
 }
+
+

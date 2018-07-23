@@ -55,7 +55,7 @@ export class RideService {
     return this.http.put<Ride>(this.URL, ride, httpOptions);
   }
   
-  delete(id: string): Observable<any[] | Ride> {
+  delete(id: number): Observable<any[] | Ride> {
     const url = `${this.URL}${id}`;
     return this.http.delete<Ride>(url);
   }

@@ -1,4 +1,4 @@
-import {Permission} from '../auth/Permission';
+import {Permission} from '../auth/permission';
 import { AuthService } from '../auth/auth.service';
 import {User} from './user';
 import {UserService} from './user.service';
