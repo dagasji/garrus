@@ -1,11 +1,8 @@
-import { Entry } from './entry';
 import { Ride } from './ride';
 import {Injectable} from '@angular/core';
-import {Vehicle} from './vehicle';
-import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
+import { Observable, Subject } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, map, tap} from 'rxjs/operators';
+import { restBaseUrl } from 'environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -15,7 +12,7 @@ const httpOptions = {
 @Injectable()
 export class RideService {
 
-  private URL = 'http://localhost:8080/ride/';
+  private URL = restBaseUrl+'/ride/';
 
 
   constructor(

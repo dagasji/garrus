@@ -1,9 +1,8 @@
+import { restBaseUrl } from 'environments/environment';
 import { Entry } from './entry';
 import {Injectable} from '@angular/core';
 import {Vehicle} from './vehicle';
-import { HttpParams } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
+import { Observable, Subject } from 'rxjs';;
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
 
@@ -15,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class VehicleService {
 
-  private vehiclesURL = 'http://localhost:8080/';
+  private vehiclesURL = restBaseUrl;
 
 
   constructor(
@@ -23,10 +22,7 @@ export class VehicleService {
 
   getVehicles(): Observable<Vehicle[]> {
     const url = `${this.vehiclesURL}/vehicle/listAll`;
-    return this.http.get<Vehicle[]>(url).pipe(
-      tap(heroes => this.log(`fetched heroes ${url}`)),
-      catchError(this.handleError('getHeroes', []))
-    );
+    return this.http.get<Vehicle[]>(url);
     //    this.messageService.add('VehicleService: fetched vehicles {}');
   }
   
@@ -44,61 +40,30 @@ export class VehicleService {
 
   push(vehicle: Vehicle): void {
     const url = `${this.vehiclesURL}/vehicle`;
-    this.http.post<Vehicle>(url, vehicle, httpOptions).pipe(
-      tap(heroes => this.log(`saved plate=${vehicle.plate}`)),
-      catchError(this.handleError('push', []))
-    ).subscribe(r => {});
+    this.http.post<Vehicle>(url, vehicle, httpOptions).subscribe(r => {});
   }
 
   delete(plate: string): Observable<any[] | Vehicle> {
     const url = `${this.vehiclesURL}/vehicle/${plate}`;
-    return this.http.delete<Vehicle>(url).pipe(
-      tap(heroes => this.log(`delete plate=${plate}`)),
-      catchError(this.handleError('push', []))
-    );
+    return this.http.delete<Vehicle>(url);
   }
   
   loadEntry(plate: string): Observable<Entry[]> {
     const url = `${this.vehiclesURL}/vehicle/entry/${plate}`;
-    return this.http.get<Entry[]>(url).pipe(
-      tap(heroes => this.log(`get entry plate=${plate}`)),
-      catchError(this.handleError('get', []))
-    );
+    return this.http.get<Entry[]>(url);
   }
   
    deleteEntry(entry: Entry): Observable<any[] | Entry> {
     const url = `${this.vehiclesURL}/vehicle/entry/${entry.id}`;
-    return this.http.delete<Entry>(url).pipe(
-      tap(heroes => this.log(`delete entry id=${entry.id}`)),
-      catchError(this.handleError('push', []))
-    );
+    return this.http.delete<Entry>(url);
   }
   
    pushEntry(entry: Entry): Observable<any[] | Entry> {
     const url = `${this.vehiclesURL}/vehicle/entry`;
-    return this.http.post<Entry>(url, entry, httpOptions).pipe(
-      tap(heroes => this.log(`saved entry entry=${entry}`)),
-      catchError(this.handleError('push', []))
-    );
+    return this.http.post<Entry>(url, entry, httpOptions);
   }
 
 
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-
-  /** Log a HeroService message with the MessageService */
-  private log(message: string) {
-  }
 }

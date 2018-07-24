@@ -1,3 +1,4 @@
+import { delay } from 'rxjs/operators';
 import { Driver } from '../driver';
 import { DriverService } from '../driver.service';
 import { Ride } from '../ride';
@@ -6,6 +7,7 @@ import { Vehicle } from '../vehicle';
 import { VehicleService } from '../vehicle.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
 import { ActivatedRoute } from '@angular/router';
@@ -32,11 +34,11 @@ export class RidesDetailComponent implements OnInit {
 
   constructor(private rideService: RideService, private vehicleService: VehicleService, private driverService: DriverService,
     private route: ActivatedRoute, private toastr: ToastrService) {
-    this.mySubject
-      .debounceTime(500)
-      .subscribe(val => {
-        this.reloadData();
-      });
+    this.mySubject.pipe(
+      debounceTime(250)
+    ).subscribe(val => {
+      this.reloadData();
+    });
   }
 
   ngOnInit() {

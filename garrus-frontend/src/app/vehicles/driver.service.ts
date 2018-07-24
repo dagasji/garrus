@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Driver} from './driver';
 import { Leave } from "./leave";
-import { HttpParams } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
+import { Observable, Subject } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
+import { restBaseUrl } from 'environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -15,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class DriverService {
 
-  private driverURL = 'http://localhost:8080/driver/';
+  private driverURL = restBaseUrl+'driver/';
 
 
   constructor(
@@ -23,10 +22,7 @@ export class DriverService {
 
   getDrivers(): Observable<Driver[]> {
     const url = `${this.driverURL}listAll`;
-    return this.http.get<Driver[]>(url).pipe(
-      tap(heroes => this.log(`fetched heroes ${url}`)),
-      catchError(this.handleError('getHeroes', []))
-    );
+    return this.http.get<Driver[]>(url);
     //    this.messageService.add('DriverService: fetched Drivers {}');
   }
 
@@ -50,10 +46,7 @@ export class DriverService {
 
   push(driver: Driver): void {
     const url = `${this.driverURL}`;
-    this.http.post<Driver>(url, driver, httpOptions).pipe(
-      tap(heroes => this.log(`saved plate=${driver.rut}`)),
-      catchError(this.handleError('push', []))
-    ).subscribe(r => {});
+    this.http.post<Driver>(url, driver, httpOptions).subscribe(r => {});
   }
 
   //Leaves functions
@@ -74,24 +67,5 @@ export class DriverService {
     const url = `${this.driverURL}leave/${leave.id}`;
     return this.http.delete<Leave[]>(url);
     //  this.messageService.add(`DriverService: fetched vechicle plate=${plate}`);
-  }
-
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-
-  /** Log a HeroService message with the MessageService */
-  private log(message: string) {
   }
 }

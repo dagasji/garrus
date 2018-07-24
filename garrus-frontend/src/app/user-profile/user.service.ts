@@ -2,8 +2,6 @@ import {User} from './user';
 import {Injectable} from '@angular/core';
 
 import {Observable} from 'rxjs';
-import {tap, delay} from 'rxjs/operators';
-import {of} from 'rxjs/observable/of';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 const httpOptions = {

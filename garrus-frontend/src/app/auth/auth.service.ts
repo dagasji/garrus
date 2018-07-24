@@ -1,10 +1,9 @@
+import { restBaseUrl } from 'environments/environment';
 import { Permission } from './permission';
 import {Authoritation} from './authoritation';
 import {Injectable} from '@angular/core';
 
 import {Observable} from 'rxjs';
-import {tap, delay} from 'rxjs/operators';
-import {of} from 'rxjs/observable/of';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 const httpOptions = {
@@ -18,7 +17,7 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
-  private authURL = 'http://localhost:8080/auth';
+  private authURL = restBaseUrl+'auth';
 
 
   constructor(
