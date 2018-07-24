@@ -15,7 +15,7 @@ import org.wrex.rides.Ride;
 import org.wrex.rides.RideRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class VehicleController {
 	
 	@Autowired
