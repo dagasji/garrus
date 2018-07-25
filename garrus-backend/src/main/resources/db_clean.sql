@@ -45,6 +45,13 @@ CREATE TABLE `vehicle` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+ ALTER TABLE `vehicle` 
+ADD CONSTRAINT `vehicle_rutFK`
+  FOREIGN KEY (`chofer`)
+  REFERENCES `driver` (`rut`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
 
 LOCK TABLES `vehicle` WRITE;
 INSERT INTO `vehicle` VALUES ('FYJA-44','gasolina','Camioneta','coche alcalde','2017','Honda','Hilux','22222222-2','2019-02-26','214-55 R18','2018-06-26','2018-10-26',0);
@@ -88,7 +95,7 @@ ALTER TABLE `entry`
 ADD INDEX `plateFK_idx` (`plate` ASC);
 
 ALTER TABLE `entry` 
-ADD CONSTRAINT `plateFK`
+ADD CONSTRAINT `entry_plateFK`
   FOREIGN KEY (`plate`)
   REFERENCES `vehicle` (`plate`)
   ON DELETE NO ACTION
@@ -118,7 +125,7 @@ CREATE TABLE `sector` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE `sector` 
-ADD CONSTRAINT `divisionFK`
+ADD CONSTRAINT `sector_divisionFK`
   FOREIGN KEY (`division_name`)
   REFERENCES `division` (`name`)
   ON DELETE CASCADE
@@ -136,6 +143,13 @@ CREATE TABLE `users` (
 	PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+  ALTER TABLE `users` 
+ADD CONSTRAINT `users_sectorFK`
+  FOREIGN KEY (`sector`)
+  REFERENCES `sector` (`name`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
 INSERT INTO `users` values ('konum','hola','Guillermo Gefaell','Servicios generales','');
 INSERT INTO `users` values ('cbueno','8819','Cecilia Bueno','Servicios generales','');
 
@@ -151,6 +165,20 @@ CREATE TABLE `ride` (
   `distance` INT(4) NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `ride` 
+ADD CONSTRAINT `ride_plateFK`
+  FOREIGN KEY (`plate`)
+  REFERENCES `vehicle` (`plate`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+  ALTER TABLE `ride` 
+ADD CONSTRAINT `ride_rutFK`
+  FOREIGN KEY (`rut_chofer`)
+  REFERENCES `driver` (`rut`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
 
 /*INSERT INTO `driver` values ('22222222-2', 'Walter');
 INSERT INTO `driver` values ('11111111-1', 'Danilo');
@@ -172,5 +200,13 @@ CREATE TABLE `leaves` (
   `end` datetime NOT NULL ,  
    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ ALTER TABLE `leaves` 
+ADD CONSTRAINT `leaves_rutFK`
+  FOREIGN KEY (`rut`)
+  REFERENCES `driver` (`rut`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
 
 INSERT into `leaves` values (1,'22222222-2','2018-07-28','2018-07-29'); 
