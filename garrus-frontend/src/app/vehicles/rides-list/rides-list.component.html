@@ -11,12 +11,12 @@
 
 	<ng-container matColumnDef="start">
 		<mat-header-cell *matHeaderCellDef>Inicio</mat-header-cell>
-		<mat-cell *matCellDef="let ride">{{ride.start | date:'short'}} </mat-cell>
+		<mat-cell *matCellDef="let ride">{{ride.start | date:'dd-MM hh:mm'}} </mat-cell>
 	</ng-container>
 
 	<ng-container matColumnDef="end">
 		<mat-header-cell *matHeaderCellDef>Final</mat-header-cell>
-		<mat-cell *matCellDef="let ride">{{ride.end | date:'short'}} </mat-cell>
+		<mat-cell *matCellDef="let ride">{{ride.end | date:'dd-MM hh:mm'}} </mat-cell>
 	</ng-container>
 
 	<ng-container matColumnDef="details">

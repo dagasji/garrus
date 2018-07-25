@@ -1,3 +1,4 @@
+import { RidesListComponent } from './../rides-list/rides-list.component';
 import { delay } from 'rxjs/operators';
 import { Driver } from '../driver';
 import { DriverService } from '../driver.service';
@@ -5,7 +6,7 @@ import { Ride } from '../ride';
 import { RideService } from '../ride.service';
 import { Vehicle } from '../vehicle';
 import { VehicleService } from '../vehicle.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
@@ -22,6 +23,7 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 export class RidesDetailComponent implements OnInit {
 
   @Input() ride: Ride = new Ride();
+  @ViewChild("next") list: RidesListComponent;
   dateStart: string;
   dateEnd: string;
   hourStart: string;
@@ -35,7 +37,7 @@ export class RidesDetailComponent implements OnInit {
   constructor(private rideService: RideService, private vehicleService: VehicleService, private driverService: DriverService,
     private route: ActivatedRoute, private toastr: ToastrService) {
     this.mySubject.pipe(
-      debounceTime(250)
+      debounceTime(300)
     ).subscribe(val => {
       this.reloadData();
     });
@@ -51,8 +53,6 @@ export class RidesDetailComponent implements OnInit {
         this.hourStart = this.ride.start.split('T')[1];
         this.dateEnd = this.ride.end.split('T')[0];
         this.hourEnd = this.ride.end.split('T')[1];
-        this.drivers.push(res.chofer);
-        this.vehicles.push(res.vehicle);
       });
     }
   }
@@ -85,15 +85,20 @@ export class RidesDetailComponent implements OnInit {
 
       if (Date.parse(this.ride.end) <= Date.parse(this.ride.start)) {
         this.toastr.warning("La fecha y hora de llegada debe ser superior a la de inicio.");
+        this.hourEnd = '';
       } else {
-        this.driverService.getAvaliable(this.ride.start, this.ride.end).subscribe(res => this.drivers = res);
-        if (this.drivers == null || this.drivers.length === 0) {
-          this.toastr.warning("No hay conductores disponibles a esas horas");
-        }
-        this.vehicleService.getAvaliableVehicles(this.ride.start, this.ride.end).subscribe(res => this.vehicles = res);
-        if (this.vehicles == null || this.vehicles.length === 0) {
-          this.toastr.warning("No hay vehiculos disponibles a esas horas");
-        }
+        this.driverService.getAvaliable(this.ride.start, this.ride.end).subscribe(res => {
+          this.drivers = res;
+          if (this.drivers == null || this.drivers.length === 0) {
+            this.toastr.warning("No hay conductores disponibles a esas horas");
+          }
+        });
+        this.vehicleService.getAvaliableVehicles(this.ride.start, this.ride.end).subscribe(res => {
+        this.vehicles = res;
+          if (this.vehicles == null || this.vehicles.length === 0) {
+            this.toastr.warning("No hay vehiculos disponibles a esas horas");
+          }
+        });
       }
     }
   }
@@ -117,6 +122,7 @@ export class RidesDetailComponent implements OnInit {
       this.dateStart = null;
       this.hourEnd = null;
       this.hourStart = null;
+      this.list.load();
     });
   }
 

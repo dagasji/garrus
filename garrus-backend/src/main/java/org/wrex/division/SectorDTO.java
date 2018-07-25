@@ -2,8 +2,9 @@ package org.wrex.division;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+import org.wrex.dto.GenericDTO;
 
-public class SectorDTO {
+public class SectorDTO extends GenericDTO {
 
 	private String name;
 

@@ -2,7 +2,9 @@ package org.wrex.division;
 
 import java.util.List;
 
-public class DivisionDTO {
+import org.wrex.dto.GenericDTO;
+
+public class DivisionDTO extends GenericDTO {
 
 	private String name;
 	

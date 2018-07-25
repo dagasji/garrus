@@ -24,9 +24,6 @@ import org.wrex.rides.RideRepository;
 public class DriverController {
 	
 	@Autowired
-	private DriverService service;
-	
-	@Autowired
 	private LeaveRepository leaveRepo;
 
 	@Autowired
@@ -38,13 +35,13 @@ public class DriverController {
 
 	@RequestMapping("/driver/detail/{rut}")
 	public DriverDTO getByRut(@PathVariable("rut") String rut) {
-		return service.getDriverByRut(rut);
+		return 	DriverMapper.INSTANCE.entityToDTO(driverRepo.findById(rut).get());
 	}
    
    
   	@RequestMapping("/driver/listAll")
   	public List<DriverDTO> getAll() {
-  		return service.getAllDrivers();
+  		return DriverMapper.INSTANCE.listToDTOList(IterableUtils.toList(driverRepo.findAll()));
   	}
 
   	@RequestMapping("/driver/listAvaliable")
@@ -60,7 +57,7 @@ public class DriverController {
   	
 	@RequestMapping(value="/driver",method=RequestMethod.POST)
 	public void save(@RequestBody DriverDTO driver) {
-		service.saveDriver(driver);
+		driverRepo.save(DriverMapper.INSTANCE.dtoToEntity(driver));
 	}
 	
 	

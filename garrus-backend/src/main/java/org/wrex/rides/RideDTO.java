@@ -1,12 +1,11 @@
 package org.wrex.rides;
 
 
-import java.util.Date;
-
 import org.wrex.driver.DriverDTO;
+import org.wrex.dto.GenericDTO;
 import org.wrex.vehicles.VehicleDTO;
 
-public class RideDTO {
+public class RideDTO  extends GenericDTO{
 
 	private Integer id;
 	

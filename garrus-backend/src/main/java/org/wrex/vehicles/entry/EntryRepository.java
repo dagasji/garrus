@@ -1,4 +1,4 @@
-package org.wrex.vehicles;
+package org.wrex.vehicles.entry;
 
 
 import java.util.List;

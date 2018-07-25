@@ -7,7 +7,7 @@
 				<mat-table [dataSource]="dataSource" matSort> <ng-container
 					matColumnDef="date"> <mat-header-cell
 					*matHeaderCellDef mat-sort-header> Fecha </mat-header-cell> <mat-cell
-					*matCellDef="let entry"> {{entry.date}} </mat-cell> </ng-container> <ng-container
+					*matCellDef="let entry"> {{entry.date |date:'dd-MM-yyyy'}} </mat-cell> </ng-container> <ng-container
 					matColumnDef="info"> <mat-header-cell
 					*matHeaderCellDef> Detalle </mat-header-cell> <mat-cell
 					*matCellDef="let entry"> {{entry.info}} </mat-cell> </ng-container> <ng-container

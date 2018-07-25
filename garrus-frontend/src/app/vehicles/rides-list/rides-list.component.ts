@@ -24,7 +24,7 @@ export class RidesListComponent implements OnInit {
     this.displayedColumns = this.columns.split(',');
   }
 
-  load() {
+  public load() {
       switch (this.display) {
         case 'active': {
            this.rideService.getActive().subscribe(res => this.dataSource.data = res as Ride[]);

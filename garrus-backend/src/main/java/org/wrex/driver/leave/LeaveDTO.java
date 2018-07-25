@@ -1,10 +1,9 @@
 package org.wrex.driver.leave;
 
-import java.util.Date;
-
 import org.wrex.driver.DriverDTO;
+import org.wrex.dto.GenericDTO;
 
-public class LeaveDTO {
+public class LeaveDTO  extends GenericDTO{
 
 	private Integer id;
 	

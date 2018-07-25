@@ -1,9 +1,10 @@
 package org.wrex.vehicles;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.wrex.driver.DriverDTO;
+import org.wrex.dto.GenericDTO;
+import org.wrex.vehicles.entry.EntryDTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -13,8 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * 
  */
 
-public class VehicleDTO implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class VehicleDTO  extends GenericDTO  {
 
 	private String plate;
 	private String gas;
@@ -193,10 +193,6 @@ public class VehicleDTO implements Serializable {
 
 	public void setNextInspection(String nextInspection) {
 		this.nextInspection = nextInspection;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	public List<EntryDTO> getHistory() {
