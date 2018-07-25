@@ -26,39 +26,39 @@ import org.wrex.vehicles.VehicleDTO;
 @SpringBootTest(classes = Application.class)
 public class RideControllerTest {
 
-	
 	@Autowired
-	private RideController rest;    private SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss:SSS");
- 
-    @Before
-    public void before() throws Exception {
-    	TimeZone.setDefault(TimeZone.getTimeZone("GMT-3"));
-        Date fixedDateTime = DATE_FORMATTER.parse("27/07/2018 10:12:00:000");
-        DateTimeUtils.setCurrentMillisFixed(fixedDateTime.getTime());
-    }
- 
-    @After
-    public void after() throws Exception {
-        DateTimeUtils.setCurrentMillisSystem();
-    }
-	
+	private RideController rest;
+	private SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss:SSS");
+
+	@Before
+	public void before() throws Exception {
+		TimeZone.setDefault(TimeZone.getTimeZone("GMT-3"));
+		Date fixedDateTime = DATE_FORMATTER.parse("27/07/2018 10:12:00:000");
+		DateTimeUtils.setCurrentMillisFixed(fixedDateTime.getTime());
+	}
+
+	@After
+	public void after() throws Exception {
+		DateTimeUtils.setCurrentMillisSystem();
+	}
+
 	@Test
 	@Transactional
 	public void testAddRideValid() {
-		RideDTO ride= generateRide();
+		RideDTO ride = generateRide();
 		rest.addRide(ride);
 	}
-	
-//	@Test
-//	@Transactional
-//	public void testAddRideInValidVehicle() {
-//		RideDTO ride= generateRide();
-//		Calendar start = Calendar.getInstance();
-//		start.set(2018, 6, 27,16,00);
-//		Calendar end = Calendar.getInstance();
-//		end.set(2018, 6, 27 ,17,00);
-//		rest.addRide(ride);
-//	}
+
+	// @Test
+	// @Transactional
+	// public void testAddRideInValidVehicle() {
+	// RideDTO ride= generateRide();
+	// Calendar start = Calendar.getInstance();
+	// start.set(2018, 6, 27,16,00);
+	// Calendar end = Calendar.getInstance();
+	// end.set(2018, 6, 27 ,17,00);
+	// rest.addRide(ride);
+	// }
 
 	@Test
 	@Transactional
@@ -66,7 +66,7 @@ public class RideControllerTest {
 		RideDTO ride = rest.getById(1);
 		ride.setDetails("Test");
 		rest.updateRide(ride);
-		 Assert.assertEquals("Test",rest.getById(1).getDetails());
+		Assert.assertEquals("Test", rest.getById(1).getDetails());
 	}
 
 	@Test
@@ -76,21 +76,21 @@ public class RideControllerTest {
 
 	@Test
 	public void testGetActive() {
-		 List<RideDTO> rides  = rest.getActive();
+		List<RideDTO> rides = rest.getActive();
 		Assert.assertEquals(1, rides.size());
 		Assert.assertEquals(new Integer(4), rides.get(0).getId());
 	}
 
 	@Test
 	public void testGetNext() {
-		 List<RideDTO> rides  = rest.getNext();
-			Assert.assertEquals(1, rides.size());
-			Assert.assertEquals(new Integer(1), rides.get(0).getId());
+		List<RideDTO> rides = rest.getNext();
+		Assert.assertEquals(1, rides.size());
+		Assert.assertEquals(new Integer(1), rides.get(0).getId());
 	}
 
 	@Test
 	public void testGetPast() {
-		List<RideDTO> rides  = rest.getPast();
+		List<RideDTO> rides = rest.getPast();
 		Assert.assertEquals(2, rides.size());
 		RideDTO ride = new RideDTO();
 		ride.setId(2);

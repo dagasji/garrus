@@ -25,12 +25,12 @@ public class Leave {
 	@Column
 	private String rut;
 	
-	@Column(columnDefinition="DATETIME")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Column(columnDefinition="DATE")
+	@Temporal(TemporalType.DATE)
 	private Date start;
 	
-	@Column(columnDefinition="DATETIME")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Column(columnDefinition="DATE")
+	@Temporal(TemporalType.DATE)
 	private Date end;
 	
 	@ManyToOne

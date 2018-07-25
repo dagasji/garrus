@@ -1,4 +1,4 @@
-package org.wrex.dao.integration;
+package org.wrex.division;
 
 import javax.transaction.Transactional;
 

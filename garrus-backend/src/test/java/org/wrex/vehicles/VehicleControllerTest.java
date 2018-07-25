@@ -46,13 +46,13 @@ public class VehicleControllerTest {
 
 	@Test
 	public void testGetAvaliableAll() {
-		List<VehicleDTO> res = rest.getAvaliable("2018-07-27T15:01:00", "2018-07-27T19:59:00");
+		List<VehicleDTO> res = rest.getAvaliable("2018-07-27T17:01:00", "2018-07-27T19:59:00");
 		Assert.assertEquals(3, res.size());
 	}
 	
 	@Test
 	public void testGetAvaliableUsed() {
-		List<VehicleDTO> res = rest.getAvaliable("2018-07-26T16:01:00", "2018-07-26T17:59:00");
+		List<VehicleDTO> res = rest.getAvaliable("2018-07-26T10:01:00", "2018-07-26T15:59:00");
 		Assert.assertEquals(1, res.size());
 		VehicleDTO jy =  new VehicleDTO();
 		jy.setPlate("JYSH-22");

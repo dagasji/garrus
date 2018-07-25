@@ -1,4 +1,4 @@
-package org.wrex.dao.integration;
+package org.wrex.driver.leave;
 
 import java.util.Calendar;
 
@@ -24,9 +24,9 @@ public class LeaveRepoTest {
 	public void fidnLeaves() {
 
 		Calendar start = Calendar.getInstance();
-		start.set(2018, 6, 20,14,0);
+		start.set(2018, 6, 28);
 		Calendar end = Calendar.getInstance();
-		end.set(2018, 6, 20,19,0);
+		end.set(2018, 6, 29);
 		Assert.assertEquals(1, repo.findLeavesBetweenDates(start.getTime(),end.getTime()).size());
 	}
 	

@@ -1,4 +1,4 @@
-package org.wrex.dao.integration;
+package org.wrex.auth;
 
 import javax.transaction.Transactional;
 
