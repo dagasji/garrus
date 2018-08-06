@@ -25,7 +25,15 @@ public class PersonaDTO extends GenericDTO {
 	
 	private String sexo;
 	
-	
+	private String run;
+
+	public String getRun() {
+		return run;
+	}
+
+	public void setRun(String run) {
+		this.run = run;
+	}
 
 	@Override
 	public String toString() {

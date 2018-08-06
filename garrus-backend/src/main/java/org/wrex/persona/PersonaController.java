@@ -1,13 +1,12 @@
 package org.wrex.persona;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-
 import java.util.List;
 import java.util.Optional;
 
 import org.apache.commons.collections4.IterableUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,8 +63,7 @@ public class PersonaController {
 			logger.debug("findByRutOrName(String) - start"); //$NON-NLS-1$
 		}
 
-		String run = param.replace(".", "");
-		run = StringUtils.substringBefore(run, "-");
+		String run = rutToRun(param);
 
 		List<PersonaDTO> returnList = PersonaMapper.INSTANCE
 				.listToDTOList(IterableUtils.toList(repo.findByRunContainingOrNombreIgnoreCaseContaining(run, param)));
@@ -75,21 +73,42 @@ public class PersonaController {
 		return returnList;
 	}
 
+	private String rutToRun(String param) {
+		String run = param.replace(".", "");
+		run = StringUtils.substringBefore(run, "-");
+		return run;
+	}
+
 	@RequestMapping(value = "/persona", method = RequestMethod.POST)
 	public void saveUser(@RequestBody PersonaDTO persona) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("saveUser(PersonaDTO) - start"); //$NON-NLS-1$
 		}
 
-		Optional<Persona> present = repo.findById(persona.getName());
-		if (!present.isPresent())
+		Optional<Persona> present = repo.findById(persona.getRut());
+		if (!present.isPresent()){
+			persona.setRut(formatRut(persona.getRut()));
+			persona.setRun(rutToRun(persona.getRut()));
 			repo.save(PersonaMapper.INSTANCE.dtoToEntity(persona));
+		}
 
 		if (logger.isDebugEnabled()) {
 			logger.debug("saveUser(PersonaDTO) - end"); //$NON-NLS-1$
 		}
 	}
-
+	
+	
+	private String formatRut(String rut) {
+		StringBuilder frut = new StringBuilder();
+		rut = rut.replace(".", "").replace("-", "");
+		int mod = 0;
+		if (rut.length()==8) {
+			mod = -1;
+		}
+		frut.append(rut.substring(0, 2+mod)).append(".").append(rut.substring(2+mod,5+mod)).append(".").append(rut.substring(5+mod,8+mod)).append("-").append(rut.substring(8+mod));
+		return frut.toString();
+	}
+	
 	@RequestMapping(value = "/persona/{rut}", method = RequestMethod.PUT)
 	public void updateUser(@PathVariable("rut") String rut, @RequestBody PersonaDTO persona) {
 		if (logger.isDebugEnabled()) {
