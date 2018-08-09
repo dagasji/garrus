@@ -64,9 +64,9 @@ public class PersonaController {
 		}
 
 		String run = rutToRun(param);
-
+ 
 		List<PersonaDTO> returnList = PersonaMapper.INSTANCE
-				.listToDTOList(IterableUtils.toList(repo.findByRunContainingOrNombreIgnoreCaseContaining(run, param)));
+				.listToDTOList(IterableUtils.toList(repo.findByRunContainingOrNombreIgnoreCaseContainingOrDireccionIgnoreCaseContaining(run, param,param)));
 		if (logger.isDebugEnabled()) {
 			logger.debug("findByRutOrName(String) - end"); //$NON-NLS-1$
 		}

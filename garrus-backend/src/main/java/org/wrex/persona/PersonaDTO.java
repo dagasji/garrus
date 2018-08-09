@@ -1,5 +1,7 @@
 package org.wrex.persona;
 
+import javax.persistence.Column;
+
 import org.wrex.dto.GenericDTO;
 
 public class PersonaDTO extends GenericDTO {
@@ -26,6 +28,28 @@ public class PersonaDTO extends GenericDTO {
 	private String sexo;
 	
 	private String run;
+	
+	private String sector;
+	
+	private String voto;
+	
+	
+
+	public String getSector() {
+		return sector;
+	}
+
+	public void setSector(String sector) {
+		this.sector = sector;
+	}
+
+	public String getVoto() {
+		return voto;
+	}
+
+	public void setVoto(String voto) {
+		this.voto = voto;
+	}
 
 	public String getRun() {
 		return run;
@@ -52,6 +76,10 @@ public class PersonaDTO extends GenericDTO {
 		builder.append(direccionCenso);
 		builder.append(", sexo=");
 		builder.append(sexo);
+		builder.append(", voto=");
+		builder.append(voto);
+		builder.append(", sector=");
+		builder.append(sector);
 		builder.append("]");
 		return builder.toString();
 	}

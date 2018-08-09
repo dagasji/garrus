@@ -34,7 +34,28 @@ public class Persona {
 	@Column
 	private String run;
 	
+	@Column
+	private String sector;
 	
+	@Column
+	private int voto;
+	
+
+	public String getSector() {
+		return sector;
+	}
+
+	public void setSector(String sector) {
+		this.sector = sector;
+	}
+
+	public int getVoto() {
+		return voto;
+	}
+
+	public void setVoto(int voto) {
+		this.voto = voto;
+	}
 
 	public String getRun() {
 		return run;
