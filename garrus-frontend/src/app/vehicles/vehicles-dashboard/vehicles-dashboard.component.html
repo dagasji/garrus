@@ -1,24 +1,12 @@
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12">
-				<div class="card">
-					<div class="card-header card-header-warning">
-						<h4 class="card-title">Viajes en curso</h4>
-					</div>
-					<div class="card-body table-responsive">			   
-						<app-rides-list display="active" columns="vehicle,chofer,start,end,details"></app-rides-list>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
 			<div class="col-md-4">
 				<div class="card">
 					<div class="card-header card-header-warning">
 						<h4 class="card-title">Choferes disponibles</h4>
 					</div>
 					<div class="card-body table-responsive">
-						<app-driver-list display='avaliable'></app-driver-list>
+						<app-driver-list display='all'></app-driver-list>
 					</div>
 				</div>
 			</div>
@@ -28,7 +16,7 @@
 						<h4 class="card-title">Vehiculos disponibles</h4>
 					</div>
 					<div class="card-body table-responsive">
-							<app-vehicle-list [showActions]="false" [showFilter]="false" display="avaliable"></app-vehicle-list>
+							<app-vehicle-list [showActions]="false" [showFilter]="false" display="all"></app-vehicle-list>
 					</div>
 				</div>
 			</div>

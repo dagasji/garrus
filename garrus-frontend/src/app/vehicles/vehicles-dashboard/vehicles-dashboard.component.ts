@@ -1,6 +1,3 @@
-import { DriverService } from '../driver.service';
-import { RideService } from '../ride.service';
-import { VehicleService } from '../vehicle.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

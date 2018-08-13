@@ -5,7 +5,6 @@ import {Location} from '@angular/common';
 
 import {DriverService} from '../driver.service';
 import {Driver} from '../driver';
-import { Leave } from "../leave";
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

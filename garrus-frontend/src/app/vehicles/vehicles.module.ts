@@ -24,18 +24,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { VehiclesDashboardComponent } from './vehicles-dashboard/vehicles-dashboard.component';
-import { RidesListComponent } from './rides-list/rides-list.component';
-import { RidesDetailComponent } from './rides-detail/rides-detail.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { RideService } from './ride.service';
-import { RideDashboardComponent } from './ride-dashboard/ride-dashboard.component';
-import { RideComponent } from './ride/ride.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
 import { DriverTableComponent } from './driver-table/driver-table.component';
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { DriverDetailComponent } from './driver-detail/driver-detail.component';
 import { DriverListComponent } from "./driver-list/driver-list.component";
-import { DriverLeaveComponent } from "./driver-leave/driver-leave.component";
 
 @NgModule({
   imports: [
@@ -57,7 +51,7 @@ import { DriverLeaveComponent } from "./driver-leave/driver-leave.component";
     MatCheckboxModule,
   ],
   exports: [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent, VehiclesDashboardComponent],
-  declarations: [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent, VehiclesDashboardComponent, RidesListComponent, RidesDetailComponent, NavigationComponent, RideDashboardComponent, RideComponent, VehicleComponent, DriverTableComponent, VehicleListComponent, DriverListComponent, DriverDetailComponent, DriverLeaveComponent],
-  providers: [VehicleService, DriverService, RideService],
+  declarations: [VehicleTableComponent, VehicleDetailComponent, VehicleHistoryComponent, VehiclesDashboardComponent, NavigationComponent, VehicleComponent, DriverTableComponent, VehicleListComponent, DriverListComponent, DriverDetailComponent],
+  providers: [VehicleService, DriverService],
 })
 export class VehiclesModule { }

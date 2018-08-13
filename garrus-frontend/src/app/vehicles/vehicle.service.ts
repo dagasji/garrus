@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class VehicleService {
 
-  private vehiclesURL = restBaseUrl;
+  private vehiclesURL = restBaseUrl+'private';
 
 
   constructor(
