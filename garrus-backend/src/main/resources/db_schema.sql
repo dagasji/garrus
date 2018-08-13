@@ -54,18 +54,6 @@ ADD CONSTRAINT `vehicle_rutFK`
 
 
 
-
---
--- Dumping data for table `hibernate_sequence`
---
-
-LOCK TABLES `hibernate_sequence` WRITE;
-/*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (30),(30),(30),(30),(30),(30),(30),(30),(30),(30),(30),(30);
-/*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
 DROP TABLE IF EXISTS `driver`;
 CREATE TABLE `driver` (
   `rut` varchar(10) NOT NULL ,
@@ -95,89 +83,12 @@ ADD CONSTRAINT `entry_plateFK`
   ON UPDATE NO ACTION;
   
 
-DROP TABLE IF EXISTS `division`;
-CREATE TABLE `division` (
-  `name` varchar(50) NOT NULL,
-  `description` varchar(500) NOT NULL ,
-	PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-DROP TABLE IF EXISTS `sector`;
-CREATE TABLE `sector` (
-  `name` varchar(50) NOT NULL,
-  `description` varchar(500) NOT NULL ,
-  `division_name` varchar(50) NOT NULL ,
-  `permissions` varchar(1000) NOT NULL ,
-	PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-ALTER TABLE `sector` 
-ADD CONSTRAINT `sector_divisionFK`
-  FOREIGN KEY (`division_name`)
-  REFERENCES `division` (`name`)
-  ON DELETE CASCADE
-  ON UPDATE NO ACTION;
-
-
+/*user as a table name cannot be used*/
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL ,
   `name` varchar(100) NOT NULL,
-  `sector` varchar(50) NOT NULL,
   `special_permissions` varchar(1000) NULL,
 	PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-  ALTER TABLE `users` 
-ADD CONSTRAINT `users_sectorFK`
-  FOREIGN KEY (`sector`)
-  REFERENCES `sector` (`name`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
-
-DROP TABLE IF EXISTS `ride`;
-CREATE TABLE `ride` (
-  `id` INT(10) NOT NULL AUTO_INCREMENT,
-  `plate` varchar(50) NOT NULL ,
-  `rut_chofer` varchar(10) NOT NULL,
-  `start` datetime  NOT NULL,
-  `end` datetime NULL,
-  `details` varchar(500) NULL,
-  `distance` INT(4) NULL,
-	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-ALTER TABLE `ride` 
-ADD CONSTRAINT `ride_plateFK`
-  FOREIGN KEY (`plate`)
-  REFERENCES `vehicle` (`plate`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
-  
-  ALTER TABLE `ride` 
-ADD CONSTRAINT `ride_rutFK`
-  FOREIGN KEY (`rut_chofer`)
-  REFERENCES `driver` (`rut`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
-
-
-
-DROP TABLE IF EXISTS `leaves`;
-CREATE TABLE `leaves` (
-  `id` INT(10) NOT NULL AUTO_INCREMENT,
-  `rut` varchar(10) NOT NULL ,
-  `start` date NOT NULL ,
-  `end` date NOT NULL ,  
-   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
- ALTER TABLE `leaves` 
-ADD CONSTRAINT `leaves_rutFK`
-  FOREIGN KEY (`rut`)
-  REFERENCES `driver` (`rut`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
-

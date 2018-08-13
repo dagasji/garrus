@@ -9,7 +9,7 @@
 		</layout>
 	</appender>
 
-	<logger name="org.wrex" level="DEBUG">
+	<logger name="org.garrus" level="DEBUG">
 		<appender-ref ref="STDOUT" />
 	</logger>
 
