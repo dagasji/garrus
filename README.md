@@ -69,6 +69,7 @@ curl -X POST -H 'Content-Type: application/json' -i http://localhost:8080/public
 7. Go into the front-end and run
 
 ```
+npm install
 ng serve
 ```
 
