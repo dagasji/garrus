@@ -1,5 +1,6 @@
 export class Authoritation {
-  username: string;
+  rut: string;
   password: string;
   token: string;
+  role: string;
 }

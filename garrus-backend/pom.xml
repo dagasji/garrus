@@ -8,10 +8,10 @@
 		<version>2.0.3.RELEASE</version>
 	</parent>
 
-	<artifactId>garrus-backend</artifactId>
+	<artifactId>VALF-backend</artifactId>
 	<packaging>jar</packaging>
-	<name>Garrus Backend</name>
-	<version>1.0.0</version>
+	<name>VALF Backend</name>
+	<version>0.0.1-SNAPSHOT</version>
 
 
 	<dependencies>
@@ -165,7 +165,7 @@
 						</dependencies>
 						<configuration>
 							<driver>com.mysql.cj.jdbc.Driver</driver>
-							<url>jdbc:mysql://localhost:3306/garrus_test</url>
+							<url>jdbc:mysql://localhost:3306/valf_test</url>
 							<username>root</username>
 							<password>hola</password>
 						</configuration>
@@ -232,6 +232,21 @@
 			<build>
 				<plugins>
 					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<source>1.8</source>
+							<target>1.8</target>
+							<annotationProcessorPaths>
+								<path>
+									<groupId>org.mapstruct</groupId>
+									<artifactId>mapstruct-processor</artifactId>
+									<version>${org.mapstruct.version}</version>
+								</path>
+							</annotationProcessorPaths>
+						</configuration>
+					</plugin>
+					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>sql-maven-plugin</artifactId>
 						<version>1.5</version>
@@ -244,7 +259,7 @@
 						</dependencies>
 						<configuration>
 							<driver>com.mysql.cj.jdbc.Driver</driver>
-							<url>jdbc:mysql://localhost:3306/garrus_develop</url>
+							<url>jdbc:mysql://localhost:3306/valf_develop</url>
 							<username>root</username>
 							<password>hola</password>
 						</configuration>
