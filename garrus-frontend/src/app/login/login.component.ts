@@ -1,6 +1,3 @@
-import { UsuarioOficinaService } from './../../../../../valf/frontend/src/app/usuario-oficina.service';
-import { OficinaService } from './../../../../../valf/frontend/src/app/oficina.service';
-import { ClienteService } from './../../../../../valf/frontend/src/app/cliente.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth/auth.service';
 import { Authoritation, ROLE_CLIENT } from '../auth/authoritation';
