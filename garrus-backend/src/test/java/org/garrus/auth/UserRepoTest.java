@@ -3,8 +3,6 @@ package org.garrus.auth;
 import javax.transaction.Transactional;
 
 import org.garrus.Application;
-import org.garrus.user.User;
-import org.garrus.user.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

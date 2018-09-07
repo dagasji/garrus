@@ -8,9 +8,9 @@
 		<version>2.0.3.RELEASE</version>
 	</parent>
 
-	<artifactId>VALF-backend</artifactId>
+	<artifactId>Garrus-backend</artifactId>
 	<packaging>jar</packaging>
-	<name>VALF Backend</name>
+	<name>Garrus Backend</name>
 	<version>0.0.1-SNAPSHOT</version>
 
 
@@ -165,7 +165,7 @@
 						</dependencies>
 						<configuration>
 							<driver>com.mysql.cj.jdbc.Driver</driver>
-							<url>jdbc:mysql://localhost:3306/valf_test</url>
+							<url>jdbc:mysql://localhost:3306/garrus_test</url>
 							<username>root</username>
 							<password>hola</password>
 						</configuration>
@@ -259,7 +259,7 @@
 						</dependencies>
 						<configuration>
 							<driver>com.mysql.cj.jdbc.Driver</driver>
-							<url>jdbc:mysql://localhost:3306/valf_develop</url>
+							<url>jdbc:mysql://localhost:3306/garrus_develop</url>
 							<username>root</username>
 							<password>hola</password>
 						</configuration>

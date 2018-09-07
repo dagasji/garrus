@@ -4,8 +4,8 @@ import java.util.Objects;
 import java.util.Optional;
 
 import org.garrus.auth.UserAuthenticationService;
-import org.garrus.user.UserDTO;
-import org.garrus.user.UserService;
+import org.garrus.auth.UserDTO;
+import org.garrus.auth.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +18,15 @@ final class TokenAuthenticationService implements UserAuthenticationService {
   @Autowired
   private UserService users;
 
+  /**
+   * Removes the Bearer: part of the authorizaiton header.
+   * @param authorizationHeader HTTP authorization header with Bearer.
+   * @return just the JWT token.
+   */
+  public static String getToken(String authorizationHeader) {
+	  return authorizationHeader.substring(7);
+  }
+  
   @Override
   public Optional<String> login(final String username, final String password) {
     return users
@@ -27,7 +36,9 @@ final class TokenAuthenticationService implements UserAuthenticationService {
   }
 
   @Override
-  public Optional<UserDTO> findByToken(final String token) {
+  public Optional<UserDTO> findByToken(String token) {
+	if (token.contains("Bearer"))
+			token = getToken(token);
     return Optional
       .of(tokens.verify(token))
       .map(map -> map.get("username"))

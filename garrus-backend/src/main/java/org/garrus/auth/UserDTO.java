@@ -1,4 +1,4 @@
-package org.garrus.user;
+package org.garrus.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,7 +21,7 @@ public class UserDTO extends GenericDTO implements UserDetails {
 	private String username;
 	private String password;
 	private String name;
-	private String specialPermissions;
+	private String role;
 	private String token;
 	
 	
@@ -31,13 +31,13 @@ public class UserDTO extends GenericDTO implements UserDetails {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	public String getSpecialPermissions() {
-		return specialPermissions;
-	}
-	public void setSpecialPermissions(String specialPermissions) {
-		this.specialPermissions = specialPermissions;
-	}
 
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -65,8 +65,8 @@ public class UserDTO extends GenericDTO implements UserDetails {
 		builder.append(password);
 		builder.append(", name=");
 		builder.append(name);
-		builder.append(", specialPermissions=");
-		builder.append(specialPermissions);
+		builder.append(", role=");
+		builder.append(role);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -98,7 +98,7 @@ public class UserDTO extends GenericDTO implements UserDetails {
 	@JsonIgnore
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		ArrayList<GrantedAuthority> auth = new ArrayList<>();
-		for (String grantedAuthority : this.getSpecialPermissions().split(",")) {
+		for (String grantedAuthority : this.getRole().split(",")) {
 			auth.add(new SimpleGrantedAuthority(grantedAuthority));
 		}
 		return auth;

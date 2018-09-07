@@ -11,10 +11,13 @@ import org.joda.time.DateTimeUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 abstract
 
-@SpringBootApplication public class Application {
+@SpringBootApplication 
+@EnableScheduling
+public class Application {
 
 	@Value("${isTesting}")
 	private boolean isTesting;

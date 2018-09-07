@@ -1,10 +1,11 @@
-package org.garrus.user;
+package org.garrus.auth;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/private/user")
 @CrossOrigin(origins = "*")
 public class UserController {
 	
@@ -38,7 +39,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/user/{username}}",method=RequestMethod.PUT)
-	public void saveUser(@PathVariable String username, @RequestBody UserDTO user) {
+	@PreAuthorize("@userStrategy.verifyUpdate(authentication, #username)")
+	public void updateUser(@PathVariable String username, @RequestBody UserDTO user) {
 		Optional<User> present = repo.findById(username);
 		if (present.isPresent()) 
 			repo.save(UserMapper.INSTANCE.dtoToEntity(user));

@@ -1,6 +1,5 @@
 package org.garrus.auth;
 
-import org.garrus.user.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;

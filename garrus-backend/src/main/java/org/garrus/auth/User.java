@@ -1,4 +1,4 @@
-package org.garrus.user;
+package org.garrus.auth;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ public class User {
 	private String name;
 
 	@Column
-	private String specialPermissions;
+	private String role;
 
 	public String getUsername() {
 		return username;
@@ -77,18 +77,19 @@ public class User {
 		builder.append(password);
 		builder.append(", name=");
 		builder.append(name);
-		builder.append(", specialPermissions=");
-		builder.append(specialPermissions);
+		builder.append(", role=");
+		builder.append(role);
 		builder.append("]");
 		return builder.toString();
 	}
 
-	public String getSpecialPermissions() {
-		return specialPermissions;
+	public String getRole() {
+		return role;
 	}
 
-	public void setSpecialPermissions(String specialPermissions) {
-		this.specialPermissions = specialPermissions;
+	public void setRole(String role) {
+		this.role = role;
 	}
+
 
 }

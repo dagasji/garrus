@@ -1,4 +1,4 @@
-package org.garrus.user;
+package org.garrus.auth;
 
 import java.util.List;
 

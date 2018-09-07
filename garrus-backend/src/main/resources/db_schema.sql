@@ -21,7 +21,7 @@ CREATE TABLE `hibernate_sequence` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `vehicle`
 --
 
 DROP TABLE IF EXISTS `vehicle`;
@@ -89,6 +89,6 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL ,
   `name` varchar(100) NOT NULL,
-  `special_permissions` varchar(1000) NULL,
+  `role` varchar(1000) NULL,
 	PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
