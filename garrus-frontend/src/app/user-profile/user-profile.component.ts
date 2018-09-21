@@ -1,4 +1,3 @@
-import {Permission} from '../auth/permission';
 import { AuthService } from '../auth/auth.service';
 import {User} from './user';
 import {UserService} from './user.service';
@@ -13,7 +12,6 @@ import {ActivatedRoute} from '@angular/router';
 export class UserProfileComponent implements OnInit {
 
   @Input() user: User;
-  permissions: Permission[];
   constructor(private route: ActivatedRoute,
               private userService: UserService,
             private authService: AuthService) {}
@@ -25,7 +23,6 @@ export class UserProfileComponent implements OnInit {
     } else {
       this.user = new User();
     }
-    this.authService.getAvaliablePermissions().subscribe(res => this.permissions = res);
   }
   
   save(){

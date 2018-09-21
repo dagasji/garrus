@@ -12,7 +12,7 @@ const httpOptions = {
 @Injectable()
 export class RideService {
 
-  private URL = restBaseUrl+'/ride/';
+  private URL = restBaseUrl+'private/ride/';
 
 
   constructor(

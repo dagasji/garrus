@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class DriverService {
 
-  private driverURL = restBaseUrl+'driver/';
+  private driverURL = restBaseUrl + 'private/driver/';
 
 
   constructor(

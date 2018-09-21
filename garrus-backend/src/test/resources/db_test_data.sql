@@ -35,8 +35,8 @@ INSERT INTO `division` values ('Administracion','Administración municipal');
 
 INSERT INTO `sector` values ('Servicios generales','Servicios generales (vehiculos)','Administracion', 'MODULE_VEHICLE_ACCESS,MODULE_VEHICLE_MODIFY');
 
-INSERT INTO `users` values ('konum','hola','Guillermo Gefaell','Servicios generales','');
-INSERT INTO `users` values ('cbueno','8819','Cecilia Bueno','Servicios generales','');
+INSERT INTO `users` values ('konum','hola','Guillermo Gefaell','ROLE_USER');
+INSERT INTO `users` values ('cbueno','8819','Cecilia Bueno','ROLE_USER');
 
 
 /* Hours are in UTC */

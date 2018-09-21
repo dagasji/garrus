@@ -125,17 +125,10 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL ,
   `name` varchar(100) NOT NULL,
-  `sector` varchar(50) NOT NULL,
-  `special_permissions` varchar(1000) NULL,
+  `role` varchar(50) NOT NULL,
 	PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  ALTER TABLE `users` 
-ADD CONSTRAINT `users_sectorFK`
-  FOREIGN KEY (`sector`)
-  REFERENCES `sector` (`name`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
 
 DROP TABLE IF EXISTS `ride`;
 CREATE TABLE `ride` (
