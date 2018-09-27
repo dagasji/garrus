@@ -12,11 +12,7 @@ const httpOptions = {
 export class UserService {
   user: User;
 
-  // store the URL so we can redirect after logging in
-  redirectUrl: string;
-
-  private authURL = 'http://localhost:8080/user';
-
+  private authURL = 'http://localhost:8080/private/user';
 
   constructor(
     private http: HttpClient) {}
@@ -24,22 +20,10 @@ export class UserService {
   getUser(username: string): Observable<User> {
     return this.http.get<User>(`${this.authURL}/${username}`);
   }
-  
-   getAll(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.authURL}/getAll`);
-  }
-  
+    
    updateUser(user: User): Observable<User> {
     return this.http.put<User>(`${this.authURL}/${user.username}`,user,httpOptions);
   }
-  
-  
-  
-  isLoggedIn(){
-    return localStorage.getItem('loggedUser')!=null;
-  }
  
-  logout(): void {
-    localStorage.clear();
-  }
+ 
 }

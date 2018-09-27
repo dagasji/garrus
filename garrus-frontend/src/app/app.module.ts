@@ -23,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { LoadingPageModule } from 'angular-loading-page';         //Loading animation componen
 import { CubeGridModule } from 'angular-loading-page';         //Loading animation componen
+import { UserService } from './user-profile/user.service';
 
 
 export function tokenGetter() {
@@ -61,7 +62,7 @@ export function tokenGetter() {
     AdminLayoutComponent,
     LoginComponent,
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
