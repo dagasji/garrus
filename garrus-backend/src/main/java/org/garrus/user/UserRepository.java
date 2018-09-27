@@ -1,6 +1,7 @@
-package org.garrus.auth;
+package org.garrus.user;
 
 
+import org.garrus.auth.User;
 import org.springframework.data.repository.CrudRepository;
 
 

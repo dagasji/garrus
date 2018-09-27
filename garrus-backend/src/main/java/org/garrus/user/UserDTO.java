@@ -1,8 +1,7 @@
-package org.garrus.auth;
+package org.garrus.user;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import org.garrus.dto.GenericDTO;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,11 +19,19 @@ public class UserDTO extends GenericDTO implements UserDetails {
 	
 	private String username;
 	private String password;
+	private String email;
 	private String name;
 	private String role;
 	private String token;
 	
 	
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getToken() {
 		return token;
 	}

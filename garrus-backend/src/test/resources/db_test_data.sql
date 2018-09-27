@@ -26,7 +26,5 @@ INSERT INTO `entry` values (1,'Cambio de aceite 10W40','FYJA-44','2018-07-20');
 INSERT INTO `entry` values (2,'Recarga de combustible 20.000$','FYJA-44','2018-07-21');
 INSERT INTO `entry` values (3,'Revisión de frenos.','FYJA-44','2018-07-22');
 
-
-
-INSERT INTO `users` values ('konum','1234','Guillermo Gefaell','ROLE_ADMIN,ROLE_USER');
-INSERT INTO `users` values ('user','1234','Normal User','ROLE_USER');
+INSERT INTO `users` values ('konum','$2a$10$BGyV.IsyD./bwCk6c1ouau7eQNyv7CVw6VvwHCgClqemJuXg7pLti','Guillermo Gefaell','ROLE_ADMIN,ROLE_USER', 'ggvalcarce@gmail.com');
+INSERT INTO `users` values ('user','$2a$10$BGyV.IsyD./bwCk6c1ouau7eQNyv7CVw6VvwHCgClqemJuXg7pLti','Normal User','ROLE_USER', 'ggvalcarce@gmail.com');

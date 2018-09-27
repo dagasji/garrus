@@ -4,9 +4,10 @@ import java.util.Objects;
 import java.util.Optional;
 
 import org.garrus.auth.UserAuthenticationService;
-import org.garrus.auth.UserDTO;
-import org.garrus.auth.UserService;
+import org.garrus.user.UserDTO;
+import org.garrus.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.google.common.collect.ImmutableMap;
@@ -18,6 +19,10 @@ final class TokenAuthenticationService implements UserAuthenticationService {
   @Autowired
   private UserService users;
 
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
   /**
    * Removes the Bearer: part of the authorizaiton header.
    * @param authorizationHeader HTTP authorization header with Bearer.
@@ -31,7 +36,7 @@ final class TokenAuthenticationService implements UserAuthenticationService {
   public Optional<String> login(final String username, final String password) {
     return users
       .findByUsername(username)
-      .filter(user -> Objects.equals(password, user.getPassword()))
+      .filter(user -> passwordEncoder.matches(password, user.getPassword()))
       .map(user -> tokens.expiring(ImmutableMap.of("username", username)));
   }
 

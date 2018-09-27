@@ -2,6 +2,8 @@ package org.garrus.auth;
 
 import java.util.Optional;
 
+import org.garrus.user.UserDTO;
+
 public interface UserAuthenticationService {
 	 /**
 	   * Logs in with the given {@code username} and {@code password}.
