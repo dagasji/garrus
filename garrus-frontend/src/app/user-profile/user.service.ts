@@ -25,5 +25,9 @@ export class UserService {
     return this.http.put<User>(`${this.authURL}/${user.username}`,user,httpOptions);
   }
  
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>('http://localhost:8080/public/user',user,httpOptions);
+  }
+  
  
 }

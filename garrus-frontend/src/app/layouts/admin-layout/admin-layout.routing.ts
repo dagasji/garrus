@@ -1,8 +1,8 @@
-import {AuthGuard} from '../../auth/auth-guard.service';
-import {Routes} from '@angular/router';
+import { AuthGuard } from '../../auth/auth-guard.service';
+import { Routes } from '@angular/router';
 
-import {DashboardComponent} from '../../dashboard/dashboard.component';
-import {UserProfileComponent} from '../../user-profile/user-profile.component';
+import { DashboardComponent } from '../../dashboard/dashboard.component';
+import { UserProfileComponent } from '../../user-profile/user-profile.component';
 export const AdminLayoutRoutes: Routes = [
   {
     path: '',
@@ -13,7 +13,11 @@ export const AdminLayoutRoutes: Routes = [
       loadChildren: 'app/vehicles/vehicles.module#VehiclesModule'
     }]
   },
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'user-profile', component: UserProfileComponent},
-  {path: 'user-profile', component: UserProfileComponent},
+  { path: 'dashboard', component: DashboardComponent },
+  {
+    path: 'user-profile', 
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard], 
+    component: UserProfileComponent
+  },
 ];

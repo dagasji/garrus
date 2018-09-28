@@ -39,10 +39,12 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public void createUser(UserDTO user) {
-		Optional<User> present = repo.findById(user.getUsername());
+		Optional<User> present = repo.findByUsernameOrEmail(user.getUsername(), user.getEmail());
 		if (!present.isPresent()) {
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			repo.save(UserMapper.INSTANCE.dtoToEntity(user));
-		}	
+		}else {
+			throw new RuntimeException("Ya existe usuario con mismo username o email");
+		}
 	}
 }

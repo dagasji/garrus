@@ -1,8 +1,11 @@
 package org.garrus.user;
 
 
+import java.util.Optional;
+
 import org.garrus.auth.User;
 import org.springframework.data.repository.CrudRepository;
+
 
 
 /**
@@ -16,4 +19,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface UserRepository extends CrudRepository<User,String>{
 
+	Optional<User> findByUsernameOrEmail(String username, String email);
 }

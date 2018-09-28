@@ -16,14 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserControllerPublic {
 	
 	@Autowired
-	private UserRepository repo;
+	private UserService service;
 	
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public void register(@RequestBody UserDTO user) {
-		Optional<User> present = repo.findById(user.getName());
-		if (!present.isPresent()) 
-			repo.save(UserMapper.INSTANCE.dtoToEntity(user));
+		service.createUser(user);
 	}
 	
 }

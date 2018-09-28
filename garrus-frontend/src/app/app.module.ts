@@ -24,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 import { LoadingPageModule } from 'angular-loading-page';         //Loading animation componen
 import { CubeGridModule } from 'angular-loading-page';         //Loading animation componen
 import { UserService } from './user-profile/user.service';
+import { RegisterComponent } from './register/register.component';
 
 
 export function tokenGetter() {
@@ -61,6 +62,7 @@ export function tokenGetter() {
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
+    RegisterComponent
   ],
   providers: [AuthGuard, AuthService, UserService],
   bootstrap: [AppComponent]
