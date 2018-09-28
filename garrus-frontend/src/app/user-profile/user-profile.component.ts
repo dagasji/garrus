@@ -14,7 +14,7 @@ export class UserProfileComponent implements OnInit {
 
   @Input() user: User;
   @Input() password: string;
-  @Input() password2: string;
+  @Input() password2 = "";
   constructor(private route: ActivatedRoute,
               private userService: UserService,
             private authService: AuthService,

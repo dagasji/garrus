@@ -41,6 +41,7 @@ public class UserServiceImpl implements UserService{
 	public void createUser(UserDTO user) {
 		Optional<User> present = repo.findByUsernameOrEmail(user.getUsername(), user.getEmail());
 		if (!present.isPresent()) {
+			user.setRole("ROLE_USER");
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			repo.save(UserMapper.INSTANCE.dtoToEntity(user));
 		}else {
