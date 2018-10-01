@@ -1,13 +1,12 @@
 package org.garrus.user;
 
-import java.util.Optional;
-
-import org.garrus.auth.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,9 +18,15 @@ public class UserControllerPublic {
 	private UserService service;
 	
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@PostMapping
 	public void register(@RequestBody UserDTO user) {
 		service.createUser(user);
 	}
+	
+	@GetMapping("/{username}/resetPassword")
+	public void resetPassword(@PathVariable("username") String username) {
+		service.resetPassword(username);
+	}
+	
 	
 }

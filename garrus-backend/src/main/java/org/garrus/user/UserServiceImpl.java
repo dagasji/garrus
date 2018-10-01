@@ -2,7 +2,11 @@ package org.garrus.user;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
+import org.apache.commons.lang3.RandomStringUtils;
 import org.garrus.auth.User;
+import org.garrus.email.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,6 +19,9 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private EmailService emailService;
 
 	public Optional<UserDTO> findByUsername(String username) {
 		Optional<User> user = repo.findById(username);
@@ -38,6 +45,7 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
+	@Transactional
 	public void createUser(UserDTO user) {
 		Optional<User> present = repo.findByUsernameOrEmail(user.getUsername(), user.getEmail());
 		if (!present.isPresent()) {
@@ -46,6 +54,21 @@ public class UserServiceImpl implements UserService{
 			repo.save(UserMapper.INSTANCE.dtoToEntity(user));
 		}else {
 			throw new RuntimeException("Ya existe usuario con mismo username o email");
+		}
+	}
+
+	@Override
+	@Transactional
+	public void resetPassword(String username) {
+		Optional<User> present = repo.findById(username);
+		if (present.isPresent()) {
+			String newPassword = RandomStringUtils.randomAlphanumeric(6);
+			String encodedPassword = passwordEncoder.encode(newPassword);
+			present.get().setPassword(encodedPassword);
+			repo.save(present.get());
+			StringBuilder body = new StringBuilder();
+			body.append("Your new password is ").append(newPassword).append("\n");
+			this.emailService.sendSimpleMessage(present.get().getEmail(), "New password generated", body.toString());
 		}
 	}
 }

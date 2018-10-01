@@ -7,9 +7,15 @@
 						<h4 class="card-title ">Login</h4>
 					</div>
 					<div class="card-body">
-						<mat-form-field class="example-full-width"> <input required matInput placeholder="Usuario" [(ngModel)]="user.username">							</mat-form-field>
-						<mat-form-field class="example-full-width"> <input required matInput type="password" placeholder="Contraseña" [(ngModel)]="user.password">							</mat-form-field>
-						<button mat-raised-button color="primary" class="pull-right" (click)="login()">Login</button>
+						<mat-form-field class="example-full-width">
+							<input required matInput placeholder="Usuario" [(ngModel)]="user.username">
+						</mat-form-field>
+						<mat-form-field class="example-full-width"  *ngIf="!forgot">
+							<input required matInput type="password" placeholder="Contraseña" [(ngModel)]="user.password">
+						</mat-form-field>
+						<a (click)="fogotPassword()" *ngIf="!forgot">I forgot my password</a>
+						<button mat-raised-button color="primary" class="pull-right" *ngIf="!forgot" (click)="login()">Login</button>
+						<button mat-raised-button color="primary" class="pull-right" *ngIf="forgot" (click)="resetPassword()">Reset password</button>
 					</div>
 				</div>
 			</div>

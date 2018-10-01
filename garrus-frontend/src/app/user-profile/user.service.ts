@@ -28,6 +28,10 @@ export class UserService {
   createUser(user: User): Observable<User> {
     return this.http.post<User>('http://localhost:8080/public/user',user,httpOptions);
   }
+
+  resetPassword(username: string): Observable<User> {
+    return this.http.get<User>(`http://localhost:8080/public/user/${username}/resetPassword`,httpOptions);
+  }
   
  
 }
