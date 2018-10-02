@@ -1,7 +1,8 @@
-package org.garrus.auth;
+package org.garrus.user;
 
 import java.util.List;
 
+import org.garrus.auth.User;
 import org.garrus.driver.Driver;
 import org.garrus.driver.DriverDTO;
 import org.mapstruct.Mapper;

@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,6 +23,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { LoadingPageModule } from 'angular-loading-page';         //Loading animation componen
 import { CubeGridModule } from 'angular-loading-page';         //Loading animation componen
+import { UserService } from './user-profile/user.service';
+import { RegisterComponent } from './register/register.component';
 
 
 export function tokenGetter() {
@@ -33,6 +35,7 @@ export function tokenGetter() {
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     HttpModule,
     ComponentsModule,
@@ -55,13 +58,15 @@ export function tokenGetter() {
     MatButtonModule,
     MatInputModule,
     VehiclesModule,
+    
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
+    RegisterComponent
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,17 +1,16 @@
 package org.garrus;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.TimeZone;
 
 import javax.annotation.PostConstruct;
 
-import org.joda.time.DateTimeUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 abstract
 
@@ -25,7 +24,12 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+	    return new BCryptPasswordEncoder();
+	}
+	
 	@PostConstruct
 	void started() {
 		TimeZone.setDefault(TimeZone.getTimeZone("GMT-3"));

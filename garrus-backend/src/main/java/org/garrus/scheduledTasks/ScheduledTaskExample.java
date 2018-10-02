@@ -18,12 +18,12 @@ public class ScheduledTaskExample {
     //This task will execute on the 00:00 of each day. 
     //See https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/scheduling/support/CronSequenceGenerator.html 
     // for more info.
-    @Scheduled(cron="0 0 0 * * ?")
+//    @Scheduled(cron="0 0 0 * * ?")
     public void cronTask() {
     	log.debug("Cron task executing...");
     }
     
-    @Scheduled(fixedRate=50000)
+//    @Scheduled(fixedRate=50000)
     public void fixedRateTask() {
     	log.debug("This task will execute every 50 seconds...");
     }

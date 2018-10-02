@@ -1,4 +1,4 @@
-package org.garrus.auth;
+package org.garrus.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;

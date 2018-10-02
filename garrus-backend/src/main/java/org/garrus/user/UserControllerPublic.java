@@ -1,9 +1,9 @@
-package org.garrus.auth;
+package org.garrus.user;
 
-import org.garrus.user.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,18 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/public/user")
 @CrossOrigin(origins = "*")
-public class AuthController {
+public class UserControllerPublic {
 	
 	@Autowired
-	UserAuthenticationService authentication;
-
+	private UserService service;
 	
-	@PostMapping(value="/login")
-	public UserDTO checkLogin(@RequestBody UserDTO req) {
-		  req.setToken(authentication
-			      .login(req.getUsername(),req.getPassword())
-			      .orElseThrow(() -> new RuntimeException("invalid login and/or password")));
-		  return req;
+	
+	@PostMapping
+	public void register(@RequestBody UserDTO user) {
+		service.createUser(user);
 	}
+	
+	@GetMapping("/{username}/resetPassword")
+	public void resetPassword(@PathVariable("username") String username) {
+		service.resetPassword(username);
+	}
+	
 	
 }

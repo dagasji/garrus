@@ -9,6 +9,9 @@ public class User {
 
 	@Id
 	private String username;
+	
+	@Column
+	private String email;
 
 	@Column
 	private String password;
@@ -18,6 +21,15 @@ public class User {
 
 	@Column
 	private String role;
+
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getUsername() {
 		return username;

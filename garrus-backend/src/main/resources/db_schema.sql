@@ -87,8 +87,9 @@ ADD CONSTRAINT `entry_plateFK`
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL ,
+  `password` varchar(200) NOT NULL ,
   `name` varchar(100) NOT NULL,
   `role` varchar(1000) NULL,
+  `email` varchar(100) NOT NULL,
 	PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
